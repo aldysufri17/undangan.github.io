@@ -990,6 +990,7 @@
             padding: 45px 30px;
             text-align: center;
             transition: all 0.3s ease;
+            border-right: 1px solid rgba(223, 178, 108, 0.2);
         }
 
         .event-card:first-child {
@@ -1604,6 +1605,10 @@
         <div class="preloader-inner">
             <img src="./logo.png" alt="Logo" class="preloader-logo"
                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>'">
+            <p style="margin-top:10px; color: white;">
+                #sel<span class="highlight">AL</span>u<span class="highlight">M</span>er<span
+                    class="highlight">A</span>wat<span class="highlight">R</span>as<span class="highlight">A</span>
+            </p>
             <p class="preloader-text">Preparing Our Day</p>
             <div class="preloader-bar">
                 <div></div>
@@ -1901,28 +1906,31 @@
             <p class="heading-sub">Event Schedule</p>
             <h2 class="heading-title">Agenda Acara</h2>
             <div class="botanical-divider"><i class="fa-solid fa-calendar-check"></i></div>
+            
             <div class="event-panel">
-                <div class="event-card" data-aos="fade-right">
+                <!-- Akad Nikah -->
+                <div class="event-card" data-aos="fade-up">
                     <div class="event-icon"><i class="fa-solid fa-leaf"></i></div>
                     <h3>Akad Nikah</h3>
                     <p class="event-date">Sabtu, 27 Juli 2026</p>
                     <p class="event-time">08.00 - 10.00 WIB</p>
                 </div>
 
-                <div class="event-location-shared">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <h4>Dusun Bendo, Muneng, Kec. Pakis, Kabupaten Magelang, Jawa Tengah 56193</h4>
-                    <button class="btn-luxury event-btn"
-                        onclick="window.open('https://maps.app.goo.gl/K2LHKpjv1yMRauoY9')">
-                        <i class="fa-solid fa-map-pin"></i> Lihat Lokasi
-                    </button>
-                </div>
-
-                <div class="event-card" data-aos="fade-left">
+                <!-- Resepsi -->
+                <div class="event-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="event-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
                     <h3>Resepsi</h3>
                     <p class="event-date">Sabtu, 27 Juli 2026</p>
                     <p class="event-time">11.00 - 13.00 WIB</p>
+                </div>
+
+                <div class="event-location-shared" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h4>Dusun Bendo, Muneng, Kec. Pakis,<br>Kabupaten Magelang, Jawa Tengah 56193</h4>
+                    <button class="btn-luxury event-btn"
+                        onclick="window.open('https://maps.app.goo.gl/K2LHKpjv1yMRauoY9')">
+                        <i class="fa-solid fa-map-pin"></i> Lihat Lokasi
+                    </button>
                 </div>
             </div>
         </div>
