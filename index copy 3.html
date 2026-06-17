@@ -4,18 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-    <title>Mar'a & Aldy | Undangan Pernikahan Digital</title>
-    <meta name="description" content="Undangan Pernikahan Digital Mar'atul Sarifah & Aldy Sufriyanto">
-    <link rel="icon" href="./logo.png">
+    <title>Adiba & Habib | Undangan Pernikahan Digital</title>
+    <meta name="description" content="Undangan Pernikahan Digital Adiba Putri Syakila & Habib Yulianto">
 
     <!-- Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Great+Vibes&display=swap"
         rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Carattere&display=swap" rel="stylesheet">
+    <!-- Tambahan Font Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Petit+Formal+Script&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -83,30 +81,19 @@
             visibility: hidden;
         }
 
-        /* Logo Container */
-        .loading-logo {
-            width: 98px;
-            height: 98px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 30px;
-            animation: logoPulse 2s ease-in-out infinite;
+        .loading-heart {
+            font-size: 40px;
+            color: var(--primary);
             animation: heartbeat 1.2s ease-in-out infinite;
         }
 
-        .logo-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 30px rgba(107, 91, 79, 0.3));
-        }
-
         .loading-text {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 14px;
+            letter-spacing: 4px;
             color: var(--primary);
-            margin-top: 12px;
+            margin-top: 20px;
+            text-transform: uppercase;
         }
 
         .loading-bar {
@@ -267,8 +254,8 @@
             max-width: 550px;
             margin: 0 auto;
             height: 100%;
+            background: #1a2a1f;
             z-index: 10000;
-            background: var(--primary-light);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -371,8 +358,7 @@
         }
 
         .cover-names {
-            /* font-family: 'Playfair Display', serif; */
-            font-family: "Carattere", cursive;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(40px, 11vw, 56px);
             font-weight: 400;
             color: #e8dcc8;
@@ -382,7 +368,7 @@
         }
 
         .cover-amp {
-            font-family: 'Carattere', cursive;
+            font-family: 'Great Vibes', cursive;
             font-size: clamp(32px, 9vw, 44px);
             color: var(--accent);
             margin: 8px 0;
@@ -566,17 +552,16 @@
         }
 
         .hero-names {
-            /* font-family: 'Playfair Display', serif; */
-            font-family: "Carattere", cursive;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(36px, 10vw, 52px);
-            font-weight: 300;
+            font-weight: 600;
             color: #FFFFFF;
             line-height: 1.2;
             text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
         }
 
         .hero-amp {
-            font-family: 'Carattere', cursive;
+            font-family: 'Great Vibes', cursive;
             font-size: clamp(34px, 9vw, 48px);
             font-weight: 400;
             color: var(--accent);
@@ -686,7 +671,7 @@
         }
 
         .section-title {
-            font-family: 'Carattere', cursive;
+            font-family: 'Great Vibes', cursive;
             font-size: clamp(28px, 7vw, 34px);
             font-weight: 700;
             color: var(--text-dark);
@@ -743,7 +728,7 @@
         }
 
         .couple-salam {
-            font-family: "Carattere", cursive;
+            font-family: 'Great Vibes', cursive;
             font-size: clamp(20px, 3.8vw, 16px);
             color: var(--text-medium);
             font-weight: bold;
@@ -812,13 +797,12 @@
         }
 
         .couple-name {
-            font-family: "Carattere", cursive;
-            font-size: 28px;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
             font-weight: 600;
             /* color: var(--text-dark); */
             color: var(--text-medium);
             margin-bottom: 8px;
-            letter-spacing: 3px;
         }
 
         .couple-parents {
@@ -877,13 +861,11 @@
         /* Countdown Section */
         .countdown-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 80px 20px 40px; /* Tambah padding top untuk ruang */
+            padding: 30px 20px;
             text-align: center;
             color: #fff;
             position: relative;
             overflow: hidden;
-            border-radius: 100px 100px 0 0; /* Lengkungan smooth */
-            margin-top: 0;
         }
 
         .countdown-section::before {
@@ -897,13 +879,8 @@
             animation: rotate 30s linear infinite;
         }
 
-        /* Tambahkan margin pada section sebelumnya agar tidak overlap */
-        section + .countdown-section {
-            margin-top: -50px; /* Overlap sedikit untuk efek smooth */
-        }
-
         .countdown-title {
-            font-family: 'Carattere', cursive;
+            font-family: 'Great Vibes', cursive;
             font-size: clamp(26px, 6vw, 30px);
             font-weight: 700;
             margin-bottom: 10px;
@@ -1002,7 +979,6 @@
             border: 1px solid rgba(212, 197, 168, 0.3);
             position: relative;
             overflow: hidden;
-            margin-top: 40px;
         }
 
         .event-card::before {
@@ -1179,7 +1155,7 @@
         }
 
         .timeline-title {
-            font-family: 'Carattere', cursive;
+            font-family: 'Great Vibes', cursive;
             font-size: 16px;
             font-weight: 700;
             color: var(--text-dark);
@@ -1340,7 +1316,7 @@
         }
 
         .gift-rsvp-title {
-            font-family: 'Carattere', cursive;
+            font-family: 'Great Vibes', cursive;
             font-size: clamp(26px, 6vw, 30px);
             font-weight: 700;
             color: #e8dcc8;
@@ -1728,9 +1704,9 @@
 
         .footer-hashtag {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(12px, 5.5vw, 22px);
+            font-size: clamp(18px, 5.5vw, 22px);
             font-weight: 500;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: var(--primary-dark);
             margin-bottom: 25px;
             text-align: center;
@@ -1759,22 +1735,27 @@
         }
 
         .footer-couple-label {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 11px;
-            color: var(--text-light);
+            letter-spacing: 4px;
+            color: var(--primary-light);
+            text-transform: uppercase;
             margin-bottom: 12px;
             text-align: center;
         }
 
         .footer-couple {
-            font-family: "Carattere", cursive;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(24px, 7vw, 30px);
             font-weight: 500;
             color: var(--text-dark);
             margin-bottom: 20px;
             text-align: center;
             transition: all 0.3s ease;
-            letter-spacing: 1px;
+        }
+
+        .footer-couple:hover {
+            letter-spacing: 2px;
         }
 
         .footer-credit {
@@ -1970,12 +1951,7 @@
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-        <div class="loading-logo">
-            <img src="logo.png" alt="Logo" class="logo-image">
-        </div>
-        <p class="footer-hashtag" style="margin-bottom: 0;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">#sel<span
-                    class="highlight">AL</span>u<span class="highlight">M</span>er<span
-                    class="highlight">A</span>wat<span class="highlight">R</span>asa</p>
+        <div class="loading-heart"><i class="fas fa-heart"></i></div>
         <div class="loading-text">Preparing Invitation</div>
         <div class="loading-bar"></div>
     </div>
@@ -1985,21 +1961,21 @@
         <div class="cover-screen" id="coverScreen">
             <div class="cover-slideshow">
                 <div class="cover-slide active"><img
-                        src="./SM-1.jpg"
+                        src="./sm-K-1.jpg"
                         alt="Cover 1" loading="eager"></div>
                 <div class="cover-slide"><img
-                        src="./SM-2.jpg"
+                        src="./sm-K-2.jpg"
                         alt="Cover 2" loading="lazy"></div>
                 <div class="cover-slide"><img
-                        src="./SM-3.jpg"
+                        src="./sm-K-3.jpg"
                         alt="Cover 3" loading="lazy"></div>
             </div>
             <div class="cover-content">
                 <div class="cover-ornament"></div>
                 <p class="cover-label">The Wedding of</p>
-                <h1 class="cover-names">Mar'a</h1>
+                <h1 class="cover-names">Adiba</h1>
                 <p class="cover-amp">&</p>
-                <h1 class="cover-names">Aldy</h1>
+                <h1 class="cover-names">Habib</h1>
                 <p class="cover-date">Rabu, 29 Juli 2026</p>
                 <div id="guestInfo" style="display:none;">
                     <p class="cover-guest">Kepada Yth.</p>
@@ -2022,20 +1998,20 @@
         <section class="hero" id="home">
             <div class="hero-slideshow">
                 <div class="hero-slide active"><img
-                        src="./SM-1.jpg"
+                        src="./sm-K-1.jpg"
                         alt="Hero 1" loading="eager"></div>
                 <div class="hero-slide"><img
-                        src="./SM-2.jpg"
+                        src="./sm-K-2.jpg"
                         alt="Hero 2" loading="lazy"></div>
                 <div class="hero-slide"><img
-                        src="./SM-3.jpg"
+                        src="./sm-K-3.jpg"
                         alt="Hero 3" loading="lazy"></div>
             </div>
             <div class="hero-overlay"></div>
             <div class="hero-gradient"></div>
             <div class="hero-content">
                 <p class="hero-sub">The Wedding of</p>
-                <h1 class="hero-names">Mar'a <span class="hero-amp">&</span> Aldy</h1>
+                <h1 class="hero-names">Adiba <span class="hero-amp">&</span> Habib</h1>
                 <p class="hero-date">Rabu, 29 Juli 2026</p>
                 <a href="#save-date" class="btn-save"><i class="fas fa-calendar-alt"></i> Simpan Tanggal</a>
             </div>
@@ -2060,10 +2036,10 @@
             <div class="couple-grid">
                 <div class="couple-card" data-aos="fade-right" data-aos-duration="1000">
                     <div class="couple-photo"><img
-                            src="girl.jpg"
-                            alt="Mar'atul Sarifah" loading="lazy"></div>
-                    <h3 class="couple-name">Mar'atul Sarifah</h3>
-                    <p class="couple-parents">Putri Bungsu<br>dari Bapak Sabari (Alm) & Ibu Mutiah</p>
+                            src="https://images.unsplash.com/photo-1594463750939-ebb28c3f7f75?w=400&h=500&fit=crop"
+                            alt="Adiba Putri Syakila" loading="lazy"></div>
+                    <h3 class="couple-name">Adiba Putri Syakila</h3>
+                    <p class="couple-parents">Putri Pertama<br>dari Bapak Andi & Ibu Khadijah</p>
                 </div>
                 <div class="divider-flower" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
                     <span class="line"></span>
@@ -2072,18 +2048,16 @@
                 </div>
                 <div class="couple-card" data-aos="fade-left" data-aos-duration="1000">
                     <div class="couple-photo"><img
-                            src="./man.png"
-                            alt="Aldy Sufriyanto" loading="lazy"></div>
-                    <h3 class="couple-name">Aldy Sufriyanto</h3>
-                    <p class="couple-parents">Putra Sulung<br>dari Bapak Kamsuri & Ibu Juwanah</p>
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop"
+                            alt="Habib Yulianto" loading="lazy"></div>
+                    <h3 class="couple-name">Habib Yulianto</h3>
+                    <p class="couple-parents">Putra Pertama<br>dari Bapak M. Daud & Ibu (Alm) Dewi Sudarwati</p>
                 </div>
             </div>
         </section>
 
         <!-- Countdown Section -->
         <section class="countdown-section" id="save-date">
-            <h2 class="section-title" style="color:#e8dcc8;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Save The Date
-            </h2>
             <div class="countdown-grid">
                 <div class="countdown-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
                     <div class="countdown-number" id="days">00</div>
@@ -2106,29 +2080,10 @@
                 data-aos-delay="500" style="background: var(--accent); color: #2a3a25;">
                 <i class="fas fa-calendar-plus"></i> Tambahkan ke Kalender
             </a>
-
-            <div class="event-card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
-                <!-- <div class="event-icon"><i class="fas fa-leaf"></i></div> -->
-                <h3 class="event-title">Akad Nikah</h3>
-                <p class="event-date">Rabu, 29 Juli 2026</p>
-                <p class="event-time">08.00 - 10.00 WIB</p>
-                <div class="footer-divider" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300"></div>
-                <h3 class="event-title">Resepsi</h3>
-                <p class="event-date">Rabu, 29 Juli 2026</p>
-                <p class="event-time">11.00 - 13.00 WIB</p>
-                <p class="event-location">
-                    <i class="fas fa-location-dot"></i> Kediaman Mempelai Wanita<br>
-                    Dusun Bendo, Muneng, Kec. Pakis,<br>Kabupaten Magelang, Jawa Tengah 56193
-                </p>
-                <a href="https://maps.app.goo.gl/K2LHKpjv1yMRauoY9" target="_blank" rel="noopener"
-                    class="btn-location">
-                    <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
-                </a>
-            </div>
         </section>
 
         <!-- Events Section -->
-        <!-- <section class="events-section" id="acara">
+        <section class="events-section" id="acara">
             <h2 class="section-title" style="color:#6d5c4f;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Save The Date
             </h2>
             <div class="section-divider" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
@@ -2164,7 +2119,7 @@
                     <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
                 </a>
             </div>
-        </section> -->
+        </section>
 
         <!-- Love Story Section -->
         <section class="lovestory-section" id="story">
@@ -2176,7 +2131,7 @@
                 <span class="line"></span>
             </div>
 
-            <img src="kisah-rasa.png"
+            <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&h=400&fit=crop"
                 alt="Love Story" class="story-image" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"
                 loading="lazy">
 
@@ -2236,53 +2191,53 @@
             <div class="gallery-grid">
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100"
                     onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-1.jpg"
+                    <img src="./sm-K-1.jpg"
                         alt="Gallery 1" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="150"
                     onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-2.jpg"
+                    <img src="./sm-K-2.jpg"
                         alt="Gallery 2" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200"
                     onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-3.jpg"
+                    <img src="./sm-K-3.jpg"
                         alt="Gallery 3" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="250"
                     onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-4.jpg"
+                    <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=400&h=400&fit=crop"
                         alt="Gallery 4" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300"
                     onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-5.jpg"
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&h=400&fit=crop"
                         alt="Gallery 5" loading="lazy">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100"
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="350"
                     onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-1.jpg"
-                        alt="Gallery 1" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400&h=400&fit=crop"
+                        alt="Gallery 6" loading="lazy">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="150"
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="400"
                     onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-2.jpg"
-                        alt="Gallery 2" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=400&fit=crop"
+                        alt="Gallery 7" loading="lazy">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200"
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="450"
                     onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-3.jpg"
-                        alt="Gallery 3" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=400&h=400&fit=crop"
+                        alt="Gallery 8" loading="lazy">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="250"
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500"
                     onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-4.jpg"
-                        alt="Gallery 4" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&h=400&fit=crop"
+                        alt="Gallery 9" loading="lazy">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300"
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500"
                     onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-5.jpg"
-                        alt="Gallery 5" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&h=400&fit=crop"
+                        alt="Gallery 9" loading="lazy">
                 </div>
             </div>
         </section>
@@ -2346,7 +2301,7 @@
                 <div class="modal-bank-card">
                     <div class="modal-bank-name">BANK BCA</div>
                     <div class="modal-bank-number" id="modalBca">1234567890</div>
-                    <div class="modal-bank-owner">a.n Mar'atul Sarifah</div>
+                    <div class="modal-bank-owner">a.n Adiba Putri Syakila</div>
                     <button class="btn-copy-modal" onclick="copyModalNumber('modalBca', this)">
                         <i class="fas fa-copy"></i> Salin Nomor
                     </button>
@@ -2354,7 +2309,7 @@
                 <div class="modal-bank-card">
                     <div class="modal-bank-name">BANK MANDIRI</div>
                     <div class="modal-bank-number" id="modalMandiri">0987654321</div>
-                    <div class="modal-bank-owner">a.n Aldy Sufriyanto</div>
+                    <div class="modal-bank-owner">a.n Habib Yulianto</div>
                     <button class="btn-copy-modal" onclick="copyModalNumber('modalMandiri', this)">
                         <i class="fas fa-copy"></i> Salin Nomor
                     </button>
@@ -2365,7 +2320,7 @@
         <!-- Hero Style Image Section -->
         <div class="hero-image-section" data-aos="fade-up" data-aos-duration="1000">
             <img class="hero-image-bg"
-                src="./footer.png" alt="Hero Image"
+                src="./sm-K-3.jpg" alt="Hero Image"
                 loading="lazy">
             <div class="hero-image-overlay"></div>
             <div class="hero-image-gradient"></div>
@@ -2382,8 +2337,9 @@
                 restu yang Anda panjatkan menjadi anugerah terindah bagi awal kisah baru kami. Untuk itu, kami
                 mengucapkan terima kasih yang sebesar-besarnya.</p>
             <div class="footer-divider" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300"></div>
-            <p class="footer-couple-label" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Kami Yang Berbahagia</p>
-            <p class="footer-couple" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">Mar'a  &  Aldy</p>
+            <p class="footer-couple-label" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">KAMI YANG
+                BERBAHAGIA</p>
+            <p class="footer-couple" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">Adiba & Habib</p>
             <p class="footer-credit" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">Made with ❤️</p>
         </footer>
     </div>
@@ -2527,11 +2483,11 @@
         document.getElementById('btnAddCalendar').addEventListener('click', (e) => {
             e.preventDefault();
             const event = {
-                title: `Pernikahan Mar'a & Aldy`,
+                title: 'Pernikahan Adiba & Habib',
                 start: '20260729T010000Z',
                 end: '20260729T060000Z',
                 location: 'Ds. Page Asri, Wates Kab. Kediri',
-                description: `Undangan Pernikahan Mar'atul Sarifah & Aldy Sufriyanto`
+                description: 'Undangan Pernikahan Adiba Putri Syakila & Habib Yulianto'
             };
             const googleUrl =
                 `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start}/${event.end}&location=${encodeURIComponent(event.location)}&details=${encodeURIComponent(event.description)}`;
@@ -2541,7 +2497,7 @@
         // Wishes Management
         let wishes = JSON.parse(localStorage.getItem('weddingWishes')) || [{
                 name: 'Santi',
-                message: `Selamat ya Mar'a & Aldy! Semoga menjadi keluarga sakinah mawaddah warahmah. 🤍`
+                message: 'Selamat ya Adiba & Habib! Semoga menjadi keluarga sakinah mawaddah warahmah. 🤍'
             },
             {
                 name: 'Rina',
