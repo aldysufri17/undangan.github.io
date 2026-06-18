@@ -12,10 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Great+Vibes&display=swap"
         rel="stylesheet">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Carattere&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carattere&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,6 +23,9 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
+        /* ============================================
+                   1. ROOT VARIABLES & RESET
+                   ============================================ */
         :root {
             --primary: #917B6A;
             --primary-dark: #6d5c4f;
@@ -34,12 +36,16 @@
             --text-dark: #3a2f2a;
             --text-light: #8b7a6b;
             --text-medium: #5a4a3a;
-            --gold-luxury: #cfa766;
+            --gold: #cfa766;
             --white: #ffffff;
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
             --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
             --shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.15);
+            --radius-card: 24px;
+            --radius-btn: 50px;
+            --radius-image: 16px;
+            --transition: 0.3s ease;
         }
 
         * {
@@ -63,107 +69,18 @@
             line-height: 1.6;
         }
 
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--cream);
-            z-index: 99999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.6s ease, visibility 0.6s;
-        }
-
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        /* Logo Container */
-        .loading-logo {
-            width: 98px;
-            height: 98px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 30px;
-            animation: logoPulse 2s ease-in-out infinite;
-            animation: heartbeat 1.2s ease-in-out infinite;
-        }
-
-        .logo-image{
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 30px rgba(107, 91, 79, 0.3));
-        }
-
-        .logo-name {
-            width: 28%;
-            filter: drop-shadow(0 10px 30px rgba(107, 91, 79, 0.3));
-        }
-
-        .loading-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: var(--primary);
-            margin-top: 12px;
-        }
-
-        .loading-bar {
-            width: 120px;
-            height: 2px;
-            background: var(--accent);
-            margin-top: 15px;
-            border-radius: 2px;
+        /* Prevent scroll when cover is active */
+        body.no-scroll {
             overflow: hidden;
-        }
-
-        .loading-bar::after {
-            content: '';
-            display: block;
-            width: 40%;
             height: 100%;
-            background: var(--primary);
-            animation: loading 1.5s ease-in-out infinite;
+            position: fixed;
+            width: 100%;
         }
 
-        @keyframes heartbeat {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            25% {
-                transform: scale(1.15);
-            }
-
-            50% {
-                transform: scale(1);
-            }
-
-            75% {
-                transform: scale(1.15);
-            }
-        }
-
-        @keyframes loading {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(350%);
-            }
-        }
-
-        .main-container {
+        /* ============================================
+                   2. UTILITY CLASSES
+                   ============================================ */
+        .container {
             max-width: 550px;
             width: 100%;
             margin: 0 auto;
@@ -172,7 +89,22 @@
             box-shadow: 0 0 60px rgba(0, 0, 0, 0.08);
         }
 
-        /* Animasi keyframes */
+        .text-center {
+            text-align: center;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .z-1 {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================
+                   3. ANIMATIONS
+                   ============================================ */
         @keyframes pulse {
 
             0%,
@@ -189,7 +121,7 @@
 
             0%,
             100% {
-                transform: translateY(0px);
+                transform: translateY(0);
             }
 
             50% {
@@ -207,7 +139,7 @@
             }
         }
 
-        @keyframes rotate {
+        @keyframes rotate360 {
             from {
                 transform: rotate(0deg);
             }
@@ -251,6 +183,36 @@
             }
         }
 
+        @keyframes loadingBar {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(350%);
+            }
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.15);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(1.15);
+            }
+        }
+
         .animate-float {
             animation: float 3s ease-in-out infinite;
         }
@@ -260,10 +222,76 @@
         }
 
         .animate-rotate {
-            animation: rotate 20s linear infinite;
+            animation: rotate360 20s linear infinite;
         }
 
-        /* Cover screen */
+        /* ============================================
+                   4. LOADING SCREEN
+                   ============================================ */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--cream);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-logo {
+            width: 98px;
+            height: 98px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            animation: heartbeat 1.2s ease-in-out infinite;
+        }
+
+        .loading-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(107, 91, 79, 0.3));
+        }
+
+        .loading-text {
+            font-size: 14px;
+            color: var(--primary);
+            margin-top: 12px;
+        }
+
+        .loading-bar {
+            width: 120px;
+            height: 2px;
+            background: var(--accent);
+            margin-top: 15px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-bar::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 100%;
+            background: var(--primary);
+            animation: loadingBar 1.5s ease-in-out infinite;
+        }
+
+        /* ============================================
+                   5. COVER SCREEN
+                   ============================================ */
         .cover-screen {
             position: fixed;
             top: 0;
@@ -340,30 +368,20 @@
             animation: fadeIn 1.2s ease-out;
         }
 
-        .cover-ornament {
-            width: 60px;
-            height: 1px;
-            background: var(--accent);
+        .cover-logo-wrapper {
+            width: 55%;
+            max-width: 300px;
             margin: 0 auto 20px;
-            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .cover-ornament::before,
-        .cover-ornament::after {
-            content: '❦';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--accent);
-            font-size: 14px;
-        }
-
-        .cover-ornament::before {
-            left: -20px;
-        }
-
-        .cover-ornament::after {
-            right: -20px;
+        .cover-logo-wrapper img {
+            width: 56%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
         }
 
         .cover-label {
@@ -372,26 +390,8 @@
             letter-spacing: 4px;
             color: var(--accent);
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             opacity: 0.9;
-        }
-
-        .cover-names {
-            /* font-family: 'Playfair Display', serif; */
-            font-family: "Carattere", cursive;
-            font-size: clamp(40px, 11vw, 56px);
-            font-weight: 400;
-            color: #e8dcc8;
-            margin: 8px 0;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-            line-height: 1.1;
-        }
-
-        .cover-amp {
-            font-family: 'Carattere', cursive;
-            font-size: clamp(32px, 9vw, 44px);
-            color: var(--accent);
-            margin: 8px 0;
         }
 
         .cover-date {
@@ -399,7 +399,7 @@
             font-size: clamp(11px, 3.2vw, 12px);
             letter-spacing: 3px;
             color: var(--accent);
-            margin: 20px 0 35px;
+            margin: 12px 0 30px;
             opacity: 0.9;
         }
 
@@ -426,7 +426,7 @@
             padding: 14px 32px;
             background: var(--accent);
             border: none;
-            border-radius: 50px;
+            border-radius: var(--radius-btn);
             font-family: 'Inter', sans-serif;
             font-size: clamp(11px, 3vw, 12px);
             letter-spacing: 2px;
@@ -434,7 +434,7 @@
             font-weight: 600;
             color: #2a3a25;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition);
             box-shadow: 0 4px 20px rgba(212, 197, 168, 0.3);
             position: relative;
             overflow: hidden;
@@ -459,7 +459,9 @@
             transform: scale(0.97);
         }
 
-        /* Music Button */
+        /* ============================================
+                   6. MUSIC BUTTON
+                   ============================================ */
         .music-btn {
             position: fixed;
             bottom: 20px;
@@ -475,7 +477,7 @@
             z-index: 1000;
             color: #2a3a25;
             font-size: 18px;
-            transition: all 0.3s;
+            transition: all var(--transition);
             box-shadow: var(--shadow-md);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -489,7 +491,9 @@
             transform: scale(0.9);
         }
 
-        /* Hero Section */
+        /* ============================================
+                   7. HERO SECTION
+                   ============================================ */
         .hero {
             position: relative;
             height: 100vh;
@@ -572,7 +576,6 @@
         }
 
         .hero-names {
-            /* font-family: 'Playfair Display', serif; */
             font-family: "Carattere", cursive;
             font-size: clamp(36px, 10vw, 52px);
             font-weight: 300;
@@ -599,30 +602,91 @@
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .btn-save {
+        /* ============================================
+                   8. BUTTONS
+                   ============================================ */
+        .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 12px 28px;
             background: var(--accent);
             border: none;
-            border-radius: 50px;
+            border-radius: var(--radius-btn);
             font-family: 'Inter', sans-serif;
             font-size: clamp(11px, 3vw, 12px);
             letter-spacing: 1.5px;
             font-weight: 600;
             color: #2a3a25;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all var(--transition);
             text-decoration: none;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-save:active {
+        .btn-primary:active {
             transform: scale(0.95);
         }
 
-        /* Quote Section */
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: transparent;
+            border: 1.5px solid var(--primary-light);
+            border-radius: var(--radius-btn);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-medium);
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-light);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary-light);
+            border: none;
+            border-radius: var(--radius-btn);
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(12px, 3.5vw, 13px);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: white;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+
+        /* ============================================
+                   9. QUOTE SECTION
+                   ============================================ */
         .quote-section {
             background: linear-gradient(135deg, var(--cream-dark) 0%, #ede5db 100%);
             padding: 70px 25px;
@@ -679,7 +743,9 @@
             text-transform: uppercase;
         }
 
-        /* Section Styles */
+        /* ============================================
+                   10. SECTION HEADERS
+                   ============================================ */
         .section-label {
             font-family: 'Cormorant Garamond', serif;
             font-size: 11px;
@@ -722,7 +788,28 @@
             font-size: 14px;
         }
 
-        /* Couple Section */
+        .divider-flower {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .divider-flower .line {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary-light), transparent);
+        }
+
+        .divider-flower i {
+            color: var(--primary-light);
+            font-size: 18px;
+        }
+
+        /* ============================================
+                   11. COUPLE SECTION
+                   ============================================ */
         .couple-section {
             padding: 70px 20px;
             text-align: center;
@@ -821,7 +908,6 @@
             font-family: "Carattere", cursive;
             font-size: 28px;
             font-weight: 600;
-            /* color: var(--text-dark); */
             color: var(--text-medium);
             margin-bottom: 8px;
             letter-spacing: 3px;
@@ -851,7 +937,7 @@
             justify-content: center;
             color: var(--primary);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all var(--transition);
             font-size: 13px;
         }
 
@@ -861,34 +947,17 @@
             transform: translateY(-2px);
         }
 
-        .divider-flower {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin: 15px 0;
-        }
-
-        .divider-flower .line {
-            width: 50px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--primary-light), transparent);
-        }
-
-        .divider-flower i {
-            color: var(--primary-light);
-            font-size: 18px;
-        }
-
-        /* Countdown Section */
+        /* ============================================
+                   12. COUNTDOWN SECTION
+                   ============================================ */
         .countdown-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 80px 20px 40px; /* Tambah padding top untuk ruang */
+            padding: 80px 20px 40px;
             text-align: center;
             color: #fff;
             position: relative;
             overflow: hidden;
-            border-radius: 100px 100px 0 0; /* Lengkungan smooth */
+            border-radius: 100px 100px 0 0;
             margin-top: 0;
         }
 
@@ -900,7 +969,7 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
-            animation: rotate 30s linear infinite;
+            animation: rotate360 30s linear infinite;
         }
 
         .countdown-title {
@@ -911,6 +980,7 @@
             text-align: center;
             position: relative;
             letter-spacing: 2px;
+            color: #e8dcc8;
         }
 
         .countdown-sub {
@@ -941,7 +1011,7 @@
             min-width: 70px;
             text-align: center;
             border: 1px solid rgba(212, 197, 168, 0.3);
-            transition: all 0.3s ease;
+            transition: all var(--transition);
         }
 
         .countdown-item:hover {
@@ -966,7 +1036,9 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Events Section */
+        /* ============================================
+                   13. EVENTS SECTION
+                   ============================================ */
         .events-section {
             padding: 70px 20px;
             position: relative;
@@ -974,16 +1046,6 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-        }
-
-        .events-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
         }
 
         .events-section>* {
@@ -994,7 +1056,7 @@
         .event-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(5px);
-            border-radius: 24px;
+            border-radius: var(--radius-card);
             padding: 35px 25px;
             margin-bottom: 20px;
             text-align: center;
@@ -1032,7 +1094,7 @@
             justify-content: center;
             font-size: 24px;
             color: var(--primary);
-            transition: transform 0.3s ease;
+            transition: transform var(--transition);
         }
 
         .event-card:hover .event-icon {
@@ -1071,34 +1133,11 @@
             margin-bottom: 18px;
         }
 
-        .btn-location {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 24px;
-            background: transparent;
-            border: 1.5px solid var(--primary-light);
-            border-radius: 50px;
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-medium);
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .btn-location:hover {
-            background: var(--primary-light);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        /* Love Story Section */
+        /* ============================================
+                   14. LOVE STORY SECTION
+                   ============================================ */
         .lovestory-section {
-            padding: 70px 20px;
+            padding: 116px 20px;
             background: var(--cream-dark);
             text-align: center;
             position: relative;
@@ -1132,7 +1171,7 @@
             position: relative;
             padding-left: 30px;
             margin-bottom: 30px;
-            transition: transform 0.3s ease;
+            transition: transform var(--transition);
         }
 
         .timeline-item:hover {
@@ -1148,7 +1187,7 @@
             height: 10px;
             background: var(--primary);
             border-radius: 50%;
-            transition: transform 0.3s ease;
+            transition: transform var(--transition);
             box-shadow: 0 0 0 4px rgba(145, 123, 106, 0.2);
         }
 
@@ -1195,7 +1234,9 @@
             line-height: 1.6;
         }
 
-        /* Gallery Section */
+        /* ============================================
+                   15. GALLERY SECTION
+                   ============================================ */
         .gallery-section {
             padding: 70px 20px;
             text-align: center;
@@ -1206,37 +1247,23 @@
             background-repeat: no-repeat;
         }
 
-        .gallery-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
         .gallery-section>* {
             position: relative;
             z-index: 1;
         }
 
-        /* Ubah dari 3 kolom menjadi 2 kolom */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            /* 2 kolom */
             gap: 12px;
             max-width: 400px;
             margin: 0 auto;
         }
 
-        /* Ubah ukuran item gallery */
         .gallery-item {
-            border-radius: 16px;
+            border-radius: var(--radius-image);
             overflow: hidden;
             aspect-ratio: 3 / 4;
-            /* Ubah dari 1:1 menjadi 3:4 (lebih panjang ke bawah) */
             cursor: pointer;
             transition: all 0.4s ease;
             border: 2px solid rgba(212, 197, 168, 0.3);
@@ -1254,7 +1281,7 @@
             color: white;
             font-size: 24px;
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: all var(--transition);
             z-index: 2;
         }
 
@@ -1267,7 +1294,7 @@
             height: 100%;
             background: rgba(145, 123, 106, 0.5);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity var(--transition);
             z-index: 1;
         }
 
@@ -1297,7 +1324,9 @@
             transform: scale(1.1);
         }
 
-        /* Gift & RSVP Section */
+        /* ============================================
+                   16. GIFT & RSVP SECTION
+                   ============================================ */
         .gift-rsvp-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             padding: 80px 20px 60px;
@@ -1372,7 +1401,7 @@
             background: var(--accent);
             border: none;
             padding: 14px 32px;
-            border-radius: 50px;
+            border-radius: var(--radius-btn);
             font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: clamp(11px, 3vw, 12px);
@@ -1380,7 +1409,7 @@
             color: #2a3a25;
             margin-bottom: 30px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all var(--transition);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             z-index: 2;
@@ -1395,6 +1424,9 @@
             transform: scale(0.97);
         }
 
+        /* ============================================
+                   17. MODAL
+                   ============================================ */
         .gift-modal {
             display: none;
             position: fixed;
@@ -1429,18 +1461,20 @@
             animation: slideDown 0.4s ease;
         }
 
-        .close-modal {
+        .modal-close {
             position: absolute;
             top: 15px;
             right: 20px;
             font-size: 28px;
             cursor: pointer;
             color: var(--text-light);
-            transition: transform 0.3s ease;
+            transition: transform var(--transition);
             line-height: 1;
+            background: none;
+            border: none;
         }
 
-        .close-modal:hover {
+        .modal-close:hover {
             transform: rotate(90deg);
             color: var(--primary);
         }
@@ -1452,7 +1486,7 @@
             margin: 15px 0;
             box-shadow: var(--shadow-sm);
             border: 1px solid rgba(224, 213, 200, 0.5);
-            transition: transform 0.3s ease;
+            transition: transform var(--transition);
         }
 
         .modal-bank-card:hover {
@@ -1488,13 +1522,13 @@
             background: var(--cream-dark);
             border: none;
             padding: 8px 20px;
-            border-radius: 50px;
+            border-radius: var(--radius-btn);
             font-family: 'Inter', sans-serif;
             font-size: 11px;
             font-weight: 600;
             margin-top: 10px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition);
             color: var(--text-medium);
         }
 
@@ -1516,6 +1550,9 @@
             opacity: 0.5;
         }
 
+        /* ============================================
+                   18. RSVP FORM
+                   ============================================ */
         .rsvp-form {
             max-width: 380px;
             margin: 25px auto 0;
@@ -1537,7 +1574,7 @@
             font-family: 'Inter', sans-serif;
             font-size: clamp(12px, 3.5vw, 13px);
             background: rgba(255, 255, 255, 0.95);
-            transition: all 0.3s ease;
+            transition: all var(--transition);
             color: var(--text-dark);
         }
 
@@ -1561,32 +1598,9 @@
             opacity: 0.7;
         }
 
-        .btn-submit {
-            width: 100%;
-            padding: 14px;
-            background: var(--primary-light);
-            border: none;
-            border-radius: 50px;
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(12px, 3.5vw, 13px);
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .btn-submit:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-submit:active {
-            transform: scale(0.98);
-        }
-
+        /* ============================================
+                   19. WISHES LIST
+                   ============================================ */
         .wishes-list {
             max-width: 380px;
             margin: 30px auto 0;
@@ -1618,7 +1632,7 @@
             margin-bottom: 12px;
             border: 1px solid rgba(224, 213, 200, 0.3);
             text-align: left;
-            transition: all 0.3s ease;
+            transition: all var(--transition);
             animation: fadeIn 0.5s ease;
         }
 
@@ -1664,7 +1678,9 @@
             padding-left: 42px;
         }
 
-        /* Hero Image Section */
+        /* ============================================
+                   20. HERO IMAGE (footer hero)
+                   ============================================ */
         .hero-image-section {
             position: relative;
             width: 100%;
@@ -1705,7 +1721,9 @@
             z-index: 1;
         }
 
-        /* Footer */
+        /* ============================================
+                   21. FOOTER
+                   ============================================ */
         .footer-section {
             padding: 70px 24px 50px;
             text-align: center;
@@ -1720,7 +1738,7 @@
             margin: 0 auto 25px;
             display: block;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            transition: transform var(--transition);
         }
 
         .footer-logo:hover {
@@ -1774,7 +1792,7 @@
             color: var(--text-dark);
             margin-bottom: 20px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all var(--transition);
             letter-spacing: 1px;
         }
 
@@ -1788,13 +1806,15 @@
         }
 
         .highlight {
-            color: var(--gold-luxury);
+            color: var(--gold);
             font-weight: 700;
             display: inline-block;
-            transition: all 0.3s ease;
+            transition: all var(--transition);
         }
 
-        /* Lightbox */
+        /* ============================================
+                   22. LIGHTBOX
+                   ============================================ */
         .lightbox {
             position: fixed;
             top: 0;
@@ -1806,10 +1826,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
+            cursor: default;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s;
+            transition: all var(--transition);
             backdrop-filter: blur(10px);
         }
 
@@ -1818,29 +1838,42 @@
             visibility: visible;
         }
 
+        .lightbox-content {
+            position: relative;
+            width: 92%;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .lightbox img {
-            max-width: 92%;
-            max-height: 90%;
-            border-radius: 16px;
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: var(--radius-image);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             animation: fadeInScale 0.4s ease;
         }
 
         .lightbox-close {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
             color: white;
             font-size: 32px;
             cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
+            transition: all var(--transition);
+            border: none;
+            z-index: 10;
         }
 
         .lightbox-close:hover {
@@ -1848,7 +1881,53 @@
             transform: rotate(90deg);
         }
 
-        /* Toast */
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 36px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all var(--transition);
+            border: none;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .lightbox-nav.prev {
+            left: 10px;
+        }
+
+        .lightbox-nav.next {
+            right: 10px;
+        }
+
+        .lightbox-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+
+        /* ============================================
+                   23. TOAST
+                   ============================================ */
         .toast {
             position: fixed;
             bottom: 80px;
@@ -1857,7 +1936,7 @@
             background: var(--text-dark);
             color: white;
             padding: 12px 24px;
-            border-radius: 50px;
+            border-radius: var(--radius-btn);
             font-family: 'Inter', sans-serif;
             font-size: 13px;
             z-index: 10002;
@@ -1881,7 +1960,9 @@
             background: #F44336;
         }
 
-        /* Scroll to top */
+        /* ============================================
+                   24. SCROLL TO TOP
+                   ============================================ */
         .scroll-top {
             position: fixed;
             bottom: 20px;
@@ -1897,8 +1978,9 @@
             cursor: pointer;
             z-index: 999;
             box-shadow: var(--shadow-md);
-            transition: all 0.3s;
+            transition: all var(--transition);
             font-size: 14px;
+            border: none;
         }
 
         .scroll-top.visible {
@@ -1910,16 +1992,9 @@
             transform: translateY(-3px);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-
-            .couple-section,
-            .events-section,
-            .gallery-section {
-                background-attachment: scroll;
-            }
-        }
-
+        /* ============================================
+                   25. RESPONSIVE
+                   ============================================ */
         @media (max-width: 550px) {
             .countdown-item {
                 padding: 12px 14px;
@@ -1949,6 +2024,20 @@
             .event-card {
                 padding: 30px 20px;
             }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 28px;
+            }
+
+            .lightbox-nav.prev {
+                left: 5px;
+            }
+
+            .lightbox-nav.next {
+                right: 5px;
+            }
         }
 
         @media (max-width: 380px) {
@@ -1965,41 +2054,202 @@
                 padding: 10px 12px;
             }
         }
+
+        @media (max-width: 768px) {
+
+            .couple-section,
+            .events-section,
+            .gallery-section {
+                background-attachment: scroll;
+            }
+        }
+
+        /* Bunga Pojok Kiri Atas */
+        .corner-flower-tl {
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            width: 250px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 1;
+            pointer-events: none;
+            transform: rotate(180deg);
+        }
+
+        /* Bunga Pojok Kanan Bawah */
+        .corner-flower-br {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 250px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .corner-flower-tl img,
+        .corner-flower-br img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Responsive untuk tablet */
+        @media (max-width: 768px) {
+
+            .corner-flower-tl,
+            .corner-flower-bl {
+                width: 180px;
+            }
+
+            .corner-flower-br {
+                width: 200px;
+            }
+
+            .corner-flower-tl {
+                top: -20px;
+                left: -20px;
+            }
+
+            .corner-flower-tr {
+                top: -20px;
+                right: -20px;
+            }
+
+            .corner-flower-bl {
+                bottom: -20px;
+                left: -20px;
+            }
+
+            .corner-flower-br {
+                bottom: -20px;
+                right: -20px;
+            }
+        }
+
+        /* Responsive untuk mobile */
+        @media (max-width: 480px) {
+
+            .corner-flower-tl .corner-flower-br {
+                width: 130px;
+            }
+
+            .corner-flower-tl {
+                top: -43px;
+                left: -15px;
+            }
+
+            .corner-flower-br {
+                bottom: -43px;
+                right: -15px;
+            }
+        }
+
+        /* Styling untuk bunga di sudut kanan bawah setiap couple-card */
+        .couple-card-flower {
+            position: absolute;
+            bottom: 96px;
+            right: 43px;
+            width: 126px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .couple-card-flower img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .couple-card-flower {
+                width: 140px;
+                bottom: -20px;
+                right: -20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .couple-card-flower {
+                width: 106px;
+                bottom: 96px;
+                right: 48px;
+            }
+        }
+
+        /* 1. Buat Keyframes Animasi */
+        @keyframes bunga-pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+                /* Membesar 5% */
+            }
+
+            100% {
+                transform: scale(1);
+                /* Kembali ke ukuran semula */
+            }
+        }
+
+        /* 2. Terapkan Animasi ke Semua Gambar Bunga */
+        /* Bunga di Section Couple Card */
+        .couple-card-flower img,
+        .couple-card-flower-left img,
+
+        /* Bunga di Section Rangkaian Rasa (4 Sudut) */
+        .corner-flower-tl img,
+        .corner-flower-tr img,
+        .corner-flower-bl img,
+        .corner-flower-br img {
+
+            animation: bunga-pulse 4s ease-in-out infinite;
+            transform-origin: center center;
+            /* Membesar dari titik tengah */
+        }
     </style>
 </head>
 
 <body>
-    <!-- Loading Screen -->
+    <!-- ============================================
+    LOADING SCREEN
+    ============================================ -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-logo">
-            <img src="logo.png" alt="Logo" class="logo-image">
+            <img src="logo.png" alt="Logo">
         </div>
-        <p class="footer-hashtag" style="margin-bottom: 0;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">#sel<span
-                    class="highlight">AL</span>u<span class="highlight">M</span>er<span
-                    class="highlight">A</span>wat<span class="highlight">R</span>asa</p>
+        <p class="footer-hashtag" style="margin-bottom: 0;" data-aos="fade-up" data-aos-duration="800"
+            data-aos-delay="100">#sel<span class="highlight">AL</span>u<span class="highlight">M</span>er<span
+                class="highlight">A</span>wat<span class="highlight">R</span>asa</p>
         <div class="loading-text">Preparing Invitation</div>
         <div class="loading-bar"></div>
     </div>
 
-    <div class="main-container">
-        <!-- Cover screen -->
+    <!-- ============================================
+    MAIN CONTAINER
+    ============================================ -->
+    <div class="container">
+
+        <!-- ============================================
+        COVER SCREEN
+        ============================================ -->
         <div class="cover-screen" id="coverScreen">
             <div class="cover-slideshow">
-                <div class="cover-slide active"><img
-                        src="./SM-1.jpg"
-                        alt="Cover 1" loading="eager"></div>
-                <div class="cover-slide"><img
-                        src="./SM-2.jpg"
-                        alt="Cover 2" loading="lazy"></div>
-                <div class="cover-slide"><img
-                        src="./SM-3.jpg"
-                        alt="Cover 3" loading="lazy"></div>
+                <div class="cover-slide active"><img src="./SM-1.jpg" alt="Cover 1" loading="eager"></div>
+                <div class="cover-slide"><img src="./SM-2.jpg" alt="Cover 2" loading="lazy"></div>
+                <div class="cover-slide"><img src="./SM-3.jpg" alt="Cover 3" loading="lazy"></div>
             </div>
             <div class="cover-content">
                 <p class="cover-label">The Wedding of</p>
-                <!-- <h1 class="cover-names">Mar'a & Aldy</h1> -->
-                <img src="logo-name.png" alt="Logo" class="logo-name">
-                
+                <div class="cover-logo-wrapper">
+                    <img src="logo-name.png" alt="Logo">
+                </div>
                 <p class="cover-date">Rabu, 29 Juli 2026</p>
                 <div id="guestInfo">
                     <p class="cover-guest">Kepada Yth. Bapak / Ibu / Saudara/i :</p>
@@ -2011,6 +2261,9 @@
             </div>
         </div>
 
+        <!-- ============================================
+        MUSIC BUTTON
+        ============================================ -->
         <div class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle Music">
             <i class="fas fa-volume-up"></i>
         </div>
@@ -2018,18 +2271,14 @@
             <source src="song3.mp3" type="audio/mpeg">
         </audio>
 
-        <!-- Hero Section -->
+        <!-- ============================================
+        HERO SECTION
+        ============================================ -->
         <section class="hero" id="home">
             <div class="hero-slideshow">
-                <div class="hero-slide active"><img
-                        src="./SM-1.jpg"
-                        alt="Hero 1" loading="eager"></div>
-                <div class="hero-slide"><img
-                        src="./SM-2.jpg"
-                        alt="Hero 2" loading="lazy"></div>
-                <div class="hero-slide"><img
-                        src="./SM-3.jpg"
-                        alt="Hero 3" loading="lazy"></div>
+                <div class="hero-slide active"><img src="./SM-1.jpg" alt="Hero 1" loading="eager"></div>
+                <div class="hero-slide"><img src="./SM-2.jpg" alt="Hero 2" loading="lazy"></div>
+                <div class="hero-slide"><img src="./SM-3.jpg" alt="Hero 3" loading="lazy"></div>
             </div>
             <div class="hero-overlay"></div>
             <div class="hero-gradient"></div>
@@ -2037,11 +2286,13 @@
                 <p class="hero-sub">The Wedding of</p>
                 <h1 class="hero-names">Mar'a <span class="hero-amp">&</span> Aldy</h1>
                 <p class="hero-date">Rabu, 29 Juli 2026</p>
-                <a href="#save-date" class="btn-save"><i class="fas fa-calendar-alt"></i> Simpan Tanggal</a>
+                <a href="#save-date" class="btn-primary"><i class="fas fa-calendar-alt"></i> Simpan Tanggal</a>
             </div>
         </section>
 
-        <!-- Quote Section -->
+        <!-- ============================================
+        QUOTE SECTION
+        ============================================ -->
         <section class="quote-section">
             <div class="quote-icon animate-float" data-aos="zoom-in" data-aos-duration="800">❝</div>
             <p class="quote-text" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">"Dan di antara
@@ -2051,39 +2302,56 @@
             </p>
         </section>
 
-        <!-- Couple Section -->
+        <!-- ============================================
+        COUPLE SECTION
+        ============================================ -->
         <section class="couple-section" id="mempelai">
-            <p class="couple-salam" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Assalamu'alaikum Wr. Wb.</p>
+            <p class="couple-salam" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Assalamu'alaikum Wr.
+                Wb.</p>
             <p class="couple-intro" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">Tanpa mengurangi
-                rasa hormat. Kami mengundang Bapak/Ibu/Saudara/i serta Kerabat sekalian untuk menghadiri acara
-                pernikahan kami:</p>
+                rasa
+                hormat. Kami mengundang Bapak/Ibu/Saudara/i serta Kerabat sekalian untuk menghadiri acara pernikahan
+                kami:</p>
+
             <div class="couple-grid">
+                <!-- Couple Card Mar'atul Sarifah -->
                 <div class="couple-card" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="couple-photo"><img
-                            src="girl.jpg"
-                            alt="Mar'atul Sarifah" loading="lazy"></div>
+                    <div class="couple-photo"><img src="girl.jpg" alt="Mar'atul Sarifah" loading="lazy"></div>
                     <h3 class="couple-name">Mar'atul Sarifah</h3>
                     <p class="couple-parents">Putri Bungsu<br>dari Bapak Sabari (Alm) & Ibu Mutiah</p>
+
+                    <!-- Bunga di sudut kanan bawah card Mar'a -->
+                    <div class="couple-card-flower" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                        <img src="./floral-corner.png" alt="Floral Decoration Mar'a">
+                    </div>
                 </div>
+
                 <div class="divider-flower" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
                     <span class="line"></span>
                     <p class="cover-amp" style="color: #5a4a3a;">&</p>
                     <span class="line"></span>
                 </div>
+
+                <!-- Couple Card Aldy Sufriyanto -->
                 <div class="couple-card" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="couple-photo"><img
-                            src="./man.png"
-                            alt="Aldy Sufriyanto" loading="lazy"></div>
+                    <div class="couple-photo"><img src="./man.png" alt="Aldy Sufriyanto" loading="lazy"></div>
                     <h3 class="couple-name">Aldy Sufriyanto</h3>
                     <p class="couple-parents">Putra Sulung<br>dari Bapak Kamsuri & Ibu Juwanah</p>
+
+                    <!-- Bunga di sudut kanan bawah card Aldy -->
+                    <div class="couple-card-flower" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                        <img src="./floral-corner.png" alt="Floral Decoration Aldy">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Countdown Section -->
+        <!-- ============================================
+        COUNTDOWN SECTION
+        ============================================ -->
         <section class="countdown-section" id="save-date">
-            <h2 class="section-title" style="color:#e8dcc8;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Save The Date
-            </h2>
+            <h2 class="section-title" style="color:#e8dcc8;" data-aos="fade-up" data-aos-duration="800"
+                data-aos-delay="100">Save The Date</h2>
             <div class="countdown-grid">
                 <div class="countdown-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
                     <div class="countdown-number" id="days">00</div>
@@ -2102,13 +2370,12 @@
                     <div class="countdown-label">Detik</div>
                 </div>
             </div>
-            <a href="#" class="btn-save" id="btnAddCalendar" data-aos="fade-up" data-aos-duration="800"
+            <a href="#" class="btn-primary" id="btnAddCalendar" data-aos="fade-up" data-aos-duration="800"
                 data-aos-delay="500" style="background: var(--accent); color: #2a3a25;">
                 <i class="fas fa-calendar-plus"></i> Tambahkan ke Kalender
             </a>
 
             <div class="event-card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
-                <!-- <div class="event-icon"><i class="fas fa-leaf"></i></div> -->
                 <h3 class="event-title">Akad Nikah</h3>
                 <p class="event-date">Rabu, 29 Juli 2026</p>
                 <div class="footer-divider" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300"></div>
@@ -2119,28 +2386,32 @@
                     <i class="fas fa-location-dot"></i> Kediaman Mempelai Wanita<br>
                     Dsn. Bendo, Muneng, Kec. Pakis,<br>Kabupaten Magelang, Jawa Tengah 56193
                 </p>
-                <a href="https://maps.app.goo.gl/K2LHKpjv1yMRauoY9" target="_blank" rel="noopener"
-                    class="btn-location">
+                <a href="https://maps.app.goo.gl/K2LHKpjv1yMRauoY9" target="_blank" rel="noopener" class="btn-outline">
                     <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
                 </a>
             </div>
         </section>
 
-        <!-- Love Story Section -->
+        <!-- ============================================
+        LOVE STORY SECTION
+        ============================================ -->
         <section class="lovestory-section" id="story">
-            <h2 class="section-title" style="color:#6d5c4f;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Rangkaian Rasa
-            </h2>
+            <div class="corner-flower-tl">
+                <img src="./floral-corner.png" alt="Floral Decoration Top Left">
+            </div>
+
+            <h2 class="section-title" style="color:#6d5c4f;" data-aos="fade-up" data-aos-duration="800"
+                data-aos-delay="100">Rangkaian Rasa</h2>
             <div class="section-divider" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
                 <span class="line"></span>
                 <i class="fas fa-heart"></i>
                 <span class="line"></span>
             </div>
 
-            <img src="kisah-rasa.png"
-                alt="Love Story" class="story-image" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"
-                loading="lazy">
+            <img src="kisah-rasa.png" alt="Love Story" class="story-image" data-aos="zoom-in" data-aos-duration="1000"
+                data-aos-delay="300" loading="lazy">
 
-                <p class="footer-hashtag" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">#sel<span
+            <p class="footer-hashtag" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">#sel<span
                     class="highlight">AL</span>u<span class="highlight">M</span>er<span
                     class="highlight">A</span>wat<span class="highlight">R</span>asa</p>
 
@@ -2187,11 +2458,17 @@
                         yang tak lekang oleh waktu.</p>
                 </div>
             </div>
+            <div class="corner-flower-br">
+                <img src="./floral-corner.png" alt="Floral Decoration Bottom Right">
+            </div>
         </section>
 
-        <!-- Gallery Section -->
+        <!-- ============================================
+        GALLERY SECTION
+        ============================================ -->
         <section class="gallery-section" id="galeri">
-            <h2 class="section-title" style="color:#6d5c4f;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Galeri Foto</h2>
+            <h2 class="section-title" style="color:#6d5c4f;" data-aos="fade-up" data-aos-duration="800"
+                data-aos-delay="100">Galeri Foto</h2>
             <div class="section-divider" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
                 <span class="line"></span>
                 <i class="fas fa-camera"></i>
@@ -2199,59 +2476,51 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100"
-                    onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-1.jpg"
-                        alt="Gallery 1" loading="lazy">
+                    onclick="openLightbox(0)">
+                    <img src="./SM-1.jpg" alt="Gallery 1" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="150"
-                    onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-2.jpg"
-                        alt="Gallery 2" loading="lazy">
+                    onclick="openLightbox(1)">
+                    <img src="./SM-2.jpg" alt="Gallery 2" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200"
-                    onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-3.jpg"
-                        alt="Gallery 3" loading="lazy">
+                    onclick="openLightbox(2)">
+                    <img src="./SM-3.jpg" alt="Gallery 3" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="250"
-                    onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-4.jpg"
-                        alt="Gallery 4" loading="lazy">
+                    onclick="openLightbox(3)">
+                    <img src="./SM-4.jpg" alt="Gallery 4" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300"
-                    onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-5.jpg"
-                        alt="Gallery 5" loading="lazy">
+                    onclick="openLightbox(4)">
+                    <img src="./SM-5.jpg" alt="Gallery 5" loading="lazy">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100"
-                    onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-1.jpg"
-                        alt="Gallery 1" loading="lazy">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="350"
+                    onclick="openLightbox(5)">
+                    <img src="./SM-1.jpg" alt="Gallery 6" loading="lazy">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="150"
-                    onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-2.jpg"
-                        alt="Gallery 2" loading="lazy">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="400"
+                    onclick="openLightbox(6)">
+                    <img src="./SM-2.jpg" alt="Gallery 7" loading="lazy">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200"
-                    onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-3.jpg"
-                        alt="Gallery 3" loading="lazy">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="450"
+                    onclick="openLightbox(7)">
+                    <img src="./SM-3.jpg" alt="Gallery 8" loading="lazy">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="250"
-                    onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-4.jpg"
-                        alt="Gallery 4" loading="lazy">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500"
+                    onclick="openLightbox(8)">
+                    <img src="./SM-4.jpg" alt="Gallery 9" loading="lazy">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300"
-                    onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="./SM-5.jpg"
-                        alt="Gallery 5" loading="lazy">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="550"
+                    onclick="openLightbox(9)">
+                    <img src="./SM-5.jpg" alt="Gallery 10" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- GIFT + RSVP SECTION -->
+        <!-- ============================================
+        GIFT & RSVP SECTION
+        ============================================ -->
         <section class="gift-rsvp-section" id="rsvp">
             <div class="wave-top-wrapper">
                 <svg width="100%" height="100%" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg"
@@ -2268,7 +2537,8 @@
                 </svg>
             </div>
 
-            <h2 class="gift-rsvp-title" style="color:#e8dcc8;" data-aos="fade-up" data-aos-duration="800">Wedding Gift</h2>
+            <h2 class="gift-rsvp-title" style="color:#e8dcc8;" data-aos="fade-up" data-aos-duration="800">Wedding Gift
+            </h2>
             <p class="gift-rsvp-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Kehadiran dan doa
                 restu Anda merupakan anugerah terindah bagi kami. Namun, apabila Anda hendak memberikan tanda kasih,
                 Anda dapat menggunakan fitur di bawah ini.</p>
@@ -2281,7 +2551,7 @@
 
             <div data-aos="fade-up" data-aos-duration="800">
                 <p class="gift-rsvp-title" style="color:#e8dcc8; margin-bottom: 0;">Ucapan & Doa</p>
-                <h2 class="gift-rsvp-text" >Berikan Ucapan & Doa Restu</h2>
+                <h2 class="gift-rsvp-text">Berikan Ucapan & Doa Restu</h2>
             </div>
             <div class="rsvp-form" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                 <div class="form-group">
@@ -2298,10 +2568,12 @@
             </div>
         </section>
 
-        <!-- Gift Modal -->
+        <!-- ============================================
+        GIFT MODAL
+        ============================================ -->
         <div class="gift-modal" id="giftModal">
             <div class="gift-modal-content">
-                <span class="close-modal" onclick="closeGiftModal()" aria-label="Tutup">&times;</span>
+                <button class="modal-close" onclick="closeGiftModal()" aria-label="Tutup">&times;</button>
                 <h3
                     style="font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 8px; font-size: 22px;">
                     Kirim Hadiah</h3>
@@ -2311,36 +2583,37 @@
                     <div class="modal-bank-name">BANK BCA</div>
                     <div class="modal-bank-number" id="modalBca">1234567890</div>
                     <div class="modal-bank-owner">a.n Mar'atul Sarifah</div>
-                    <button class="btn-copy-modal" onclick="copyModalNumber('modalBca', this)">
-                        <i class="fas fa-copy"></i> Salin Nomor
-                    </button>
+                    <button class="btn-copy-modal" onclick="copyModalNumber('modalBca', this)"><i
+                            class="fas fa-copy"></i> Salin Nomor</button>
                 </div>
                 <div class="modal-bank-card">
                     <div class="modal-bank-name">BANK MANDIRI</div>
                     <div class="modal-bank-number" id="modalMandiri">0987654321</div>
                     <div class="modal-bank-owner">a.n Aldy Sufriyanto</div>
-                    <button class="btn-copy-modal" onclick="copyModalNumber('modalMandiri', this)">
-                        <i class="fas fa-copy"></i> Salin Nomor
-                    </button>
+                    <button class="btn-copy-modal" onclick="copyModalNumber('modalMandiri', this)"><i
+                            class="fas fa-copy"></i> Salin Nomor</button>
                 </div>
                 <div class="modal-bank-card">
                     <div class="modal-bank-name">Kirim Hadiah</div>
                     <i class="fas fa-gift"></i>
-                    <div class="modal-bank-owner" id="modalAddress">Nama Penerima : Mar'atul Sarifah <br/> No. HP : 1234 5678 90<br/> Dsn. Bendo, Muneng, Kec. Pakis, Kabupaten Magelang, Jawa Tengah</div>
+                    <div class="modal-bank-owner" id="modalAddress">Nama Penerima : Mar'atul Sarifah <br /> No. HP :
+                        1234 5678 90<br /> Dsn. Bendo, Muneng, Kec. Pakis, Kabupaten Magelang, Jawa Tengah</div>
                 </div>
             </div>
         </div>
 
-        <!-- Hero Style Image Section -->
+        <!-- ============================================
+        HERO IMAGE (footer visual)
+        ============================================ -->
         <div class="hero-image-section" data-aos="fade-up" data-aos-duration="1000">
-            <img class="hero-image-bg"
-                src="./footer.jpg" alt="Hero Image"
-                loading="lazy">
+            <img class="hero-image-bg" src="./footer.jpg" alt="Hero Image" loading="lazy">
             <div class="hero-image-overlay"></div>
             <div class="hero-image-gradient"></div>
         </div>
 
-        <!-- FOOTER SECTION -->
+        <!-- ============================================
+        FOOTER
+        ============================================ -->
         <footer class="footer-section">
             <img class="footer-logo" data-aos="fade-down" data-aos-duration="800" src="logo.png" alt="Logo"
                 onerror="this.style.display='none'">
@@ -2351,43 +2624,89 @@
                 restu yang Anda panjatkan menjadi anugerah terindah bagi awal kisah baru kami. Untuk itu, kami
                 mengucapkan terima kasih yang sebesar-besarnya.</p>
             <div class="footer-divider" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300"></div>
-            <p class="footer-couple-label" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Kami Yang Berbahagia</p>
-            <p class="footer-couple" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">Mar'a  &  Aldy</p>
+            <p class="footer-couple-label" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Kami Yang
+                Berbahagia</p>
+            <p class="footer-couple" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">Mar'a & Aldy</p>
         </footer>
-    </div>
 
-    <!-- Lightbox -->
+    </div><!-- .container -->
+
+    <!-- ============================================
+    LIGHTBOX
+    ============================================ -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close" aria-label="Tutup">&times;</span>
-        <img id="lightboxImg" src="" alt="Preview">
+        <button class="lightbox-close" onclick="event.stopPropagation(); closeLightbox();"
+            aria-label="Tutup">&times;</button>
+        <div class="lightbox-content">
+            <button class="lightbox-nav prev" onclick="event.stopPropagation(); navigateGallery(-1);"
+                aria-label="Previous">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img id="lightboxImg" src="" alt="Preview">
+            <button class="lightbox-nav next" onclick="event.stopPropagation(); navigateGallery(1);" aria-label="Next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="lightbox-counter" id="lightboxCounter">1 / 10</div>
     </div>
 
-    <!-- Toast -->
+    <!-- ============================================
+    TOAST
+    ============================================ -->
     <div class="toast" id="toast"></div>
 
-    <!-- Scroll to top -->
-    <div class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Scroll to top">
+    <!-- ============================================
+    SCROLL TO TOP
+    ============================================ -->
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Scroll to top">
         <i class="fas fa-chevron-up"></i>
-    </div>
+    </button>
 
+    <!-- ============================================
+    SCRIPTS
+    ============================================ -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Loading Screen
+        // ============================================
+        // GALLERY DATA
+        // ============================================
+        const galleryImages = [
+            './SM-1.jpg',
+            './SM-2.jpg',
+            './SM-3.jpg',
+            './SM-4.jpg',
+            './SM-5.jpg',
+            './SM-1.jpg',
+            './SM-2.jpg',
+            './SM-3.jpg',
+            './SM-4.jpg',
+            './SM-5.jpg'
+        ];
+
+        let currentGalleryIndex = 0;
+
+        // ============================================
+        // LOADING SCREEN
+        // ============================================
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loadingScreen').classList.add('hidden');
             }, 1500);
         });
 
-        // Get guest name from URL
+        // ============================================
+        // GUEST NAME FROM URL
+        // ============================================
         const urlParams = new URLSearchParams(window.location.search);
         const guestName = urlParams.get('to') || urlParams.get('guest');
         if (guestName) {
             document.getElementById('guestInfo').style.display = 'block';
-            document.getElementById('guestNameDisplay').textContent = decodeURIComponent(guestName.replace(/\+/g, ' '));
+            document.querySelector('.cover-guest-name').textContent = decodeURIComponent(guestName.replace(/\+/g, ' '));
         }
 
-        // AOS Configuration
+        // ============================================
+        // AOS INIT
+        // ============================================
         AOS.init({
             duration: 800,
             easing: 'ease-out-cubic',
@@ -2397,12 +2716,11 @@
             delay: 0,
             disable: false
         });
+        setTimeout(() => AOS.refresh(), 1600);
 
-        setTimeout(() => {
-            AOS.refresh();
-        }, 1600);
-
-        // Slideshow
+        // ============================================
+        // SLIDESHOW
+        // ============================================
         let coverSlideIndex = 0,
             heroSlideIndex = 0;
         const coverSlides = document.querySelectorAll('.cover-slide');
@@ -2424,16 +2742,19 @@
             }, 6000);
         }
 
-        // Open Invitation - TANPA overflow settings
+        // ============================================
+        // OPEN INVITATION
+        // ============================================
         function openInvitation() {
             document.getElementById('coverScreen').classList.add('hidden');
+            document.body.classList.remove('no-scroll');
 
             const audio = document.getElementById('bgMusic');
             const musicBtn = document.getElementById('musicBtn');
             const icon = document.querySelector('#musicBtn i');
 
             audio.play().then(() => {
-                icon.className = 'fas fa-volume-up'; // Icon speaker ON
+                icon.className = 'fas fa-volume-up';
                 musicBtn.classList.add('playing');
             }).catch(e => console.log('Audio play failed:', e));
 
@@ -2442,13 +2763,12 @@
                 top: 0,
                 behavior: 'smooth'
             });
-
-            setTimeout(() => {
-                AOS.refresh();
-            }, 500);
+            setTimeout(() => AOS.refresh(), 500);
         }
 
-        // Music Toggle
+        // ============================================
+        // MUSIC TOGGLE
+        // ============================================
         function toggleMusic() {
             const audio = document.getElementById('bgMusic');
             const icon = document.querySelector('#musicBtn i');
@@ -2456,21 +2776,23 @@
 
             if (audio.paused) {
                 audio.play().then(() => {
-                    icon.className = 'fas fa-volume-up'; // Speaker ON (suara menyala)
+                    icon.className = 'fas fa-volume-up';
                     btn.classList.add('playing');
                 }).catch(e => console.log('Audio play failed:', e));
             } else {
                 audio.pause();
-                icon.className = 'fas fa-volume-mute'; // Speaker OFF (silang/mute)
+                icon.className = 'fas fa-volume-mute';
                 btn.classList.remove('playing');
             }
         }
 
-        // Countdown
+        // ============================================
+        // COUNTDOWN
+        // ============================================
         const weddingDate = new Date('2026-07-29T08:00:00+07:00').getTime();
 
         function updateCountdown() {
-            const now = new Date().getTime();
+            const now = Date.now();
             const diff = weddingDate - now;
 
             if (diff > 0) {
@@ -2482,34 +2804,36 @@
                 document.getElementById('seconds').innerText = String(Math.floor((diff % 60000) / 1000)).padStart(2,
                     '0');
             } else {
-                document.getElementById('days').innerText = '00';
-                document.getElementById('hours').innerText = '00';
-                document.getElementById('minutes').innerText = '00';
-                document.getElementById('seconds').innerText = '00';
+                ['days', 'hours', 'minutes', 'seconds'].forEach(id => document.getElementById(id).innerText = '00');
             }
         }
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Add to Calendar
+        // ============================================
+        // ADD TO CALENDAR
+        // ============================================
         document.getElementById('btnAddCalendar').addEventListener('click', (e) => {
             e.preventDefault();
             const event = {
-                title: `Pernikahan Mar'a & Aldy`,
+                title: 'Pernikahan Mar\'a & Aldy',
                 start: '20260729T010000Z',
                 end: '20260729T060000Z',
                 location: 'Dsn. Bendo, Muneng, Kec. Pakis, Kabupaten Magelang, Jawa Tengah 56193',
-                description: `Undangan Pernikahan Mar'atul Sarifah & Aldy Sufriyanto`
+                description: 'Undangan Pernikahan Mar\'atul Sarifah & Aldy Sufriyanto'
             };
-            const googleUrl =
-                `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start}/${event.end}&location=${encodeURIComponent(event.location)}&details=${encodeURIComponent(event.description)}`;
-            window.open(googleUrl, '_blank');
+            window.open(
+                `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start}/${event.end}&location=${encodeURIComponent(event.location)}&details=${encodeURIComponent(event.description)}`,
+                '_blank'
+            );
         });
 
-        // Wishes Management
+        // ============================================
+        // WISHES MANAGEMENT
+        // ============================================
         let wishes = JSON.parse(localStorage.getItem('weddingWishes')) || [{
                 name: 'Santi',
-                message: `Selamat ya Mar'a & Aldy! Semoga menjadi keluarga sakinah mawaddah warahmah. 🤍`
+                message: 'Selamat ya Mar\'a & Aldy! Semoga menjadi keluarga sakinah mawaddah warahmah. 🤍'
             },
             {
                 name: 'Rina',
@@ -2521,6 +2845,12 @@
             }
         ];
 
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
         function displayWishes() {
             const container = document.getElementById('wishesList');
             if (!container) return;
@@ -2531,25 +2861,15 @@
                 return;
             }
 
-            container.innerHTML = wishes.map(w => {
-                const initial = w.name.charAt(0).toUpperCase();
-
-                return `
+            container.innerHTML = wishes.map(w => `
                 <div class="wish-item">
                     <div class="wish-header">
-                        <div class="wish-avatar">${initial}</div>
+                        <div class="wish-avatar">${escapeHtml(w.name.charAt(0).toUpperCase())}</div>
                         <div class="wish-name">${escapeHtml(w.name)}</div>
                     </div>
                     <div class="wish-message">"${escapeHtml(w.message)}"</div>
                 </div>
-            `;
-            }).join('');
-        }
-
-        function escapeHtml(str) {
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
+            `).join('');
         }
 
         function submitWish() {
@@ -2571,30 +2891,89 @@
 
             document.getElementById('inputName').value = '';
             document.getElementById('inputMessage').value = '';
-
             showToast('Terima kasih atas ucapan dan doa restunya! 🙏', 'success');
         }
 
         displayWishes();
 
-        // Lightbox
-        function openLightbox(src) {
-            document.getElementById('lightboxImg').src = src;
+        // ============================================
+        // LIGHTBOX WITH NAVIGATION
+        // ============================================
+        function openLightbox(index) {
+            currentGalleryIndex = index;
+            updateLightboxImage();
             document.getElementById('lightbox').classList.add('active');
+            document.body.classList.add('no-scroll');
         }
 
         function closeLightbox() {
             document.getElementById('lightbox').classList.remove('active');
+            document.body.classList.remove('no-scroll');
         }
 
-        // Gift Modal
+        function updateLightboxImage() {
+            const img = document.getElementById('lightboxImg');
+            img.src = galleryImages[currentGalleryIndex];
+            document.getElementById('lightboxCounter').textContent =
+                `${currentGalleryIndex + 1} / ${galleryImages.length}`;
+        }
+
+        function navigateGallery(direction) {
+            currentGalleryIndex = (currentGalleryIndex + direction + galleryImages.length) % galleryImages.length;
+            updateLightboxImage();
+        }
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    navigateGallery(-1);
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    navigateGallery(1);
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
+
+        // Touch swipe for lightbox
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                touchStartX = e.changedTouches[0].screenX;
+            }
+        });
+
+        document.addEventListener('touchend', (e) => {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        navigateGallery(1);
+                    } else {
+                        navigateGallery(-1);
+                    }
+                }
+            }
+        });
+
+        // ============================================
+        // GIFT MODAL
+        // ============================================
         const giftModal = document.getElementById('giftModal');
         document.getElementById('btnKirimHadiah').addEventListener('click', () => {
             giftModal.classList.add('active');
+            document.body.classList.add('no-scroll');
         });
 
         function closeGiftModal() {
             giftModal.classList.remove('active');
+            document.body.classList.remove('no-scroll');
         }
 
         giftModal.addEventListener('click', (e) => {
@@ -2608,7 +2987,6 @@
                 btn.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
                 btn.classList.add('copied');
                 showToast(`Nomor rekening ${text} berhasil disalin!`, 'success');
-
                 setTimeout(() => {
                     btn.innerHTML = originalHTML;
                     btn.classList.remove('copied');
@@ -2618,25 +2996,22 @@
             });
         }
 
-        // Toast
+        // ============================================
+        // TOAST
+        // ============================================
         function showToast(message, type = '') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.className = 'toast show ' + type;
-
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+            setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
-        // Scroll to top
+        // ============================================
+        // SCROLL TO TOP
+        // ============================================
         const scrollTopBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                scrollTopBtn.classList.add('visible');
-            } else {
-                scrollTopBtn.classList.remove('visible');
-            }
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
         });
 
         function scrollToTop() {
@@ -2646,7 +3021,9 @@
             });
         }
 
-        // Keyboard shortcuts
+        // ============================================
+        // KEYBOARD SHORTCUTS
+        // ============================================
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeLightbox();
@@ -2654,7 +3031,9 @@
             }
         });
 
-        // Expose functions
+        // ============================================
+        // EXPOSE GLOBALS
+        // ============================================
         window.openInvitation = openInvitation;
         window.toggleMusic = toggleMusic;
         window.openLightbox = openLightbox;
@@ -2663,6 +3042,7 @@
         window.copyModalNumber = copyModalNumber;
         window.submitWish = submitWish;
         window.scrollToTop = scrollToTop;
+        window.navigateGallery = navigateGallery;
     </script>
 </body>
 
