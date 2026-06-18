@@ -729,6 +729,15 @@
             opacity: 0.7;
         }
 
+        .quote-sub {
+            font-size: 0.9rem;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 1px;
+            color: var(--text-medium);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
         .quote-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(16px, 4.2vw, 18px);
@@ -2312,6 +2321,77 @@
                 right: -15px;
             }
         }
+
+        .quote-flower-center {
+            width: 250px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .quote-flower-center img {
+            width: 50%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Animasi pulse untuk bunga */
+        .quote-flower-center img {
+            animation: bunga-pulse 5s ease-in-out infinite;
+            transform-origin: center center;
+        }
+
+        /* Styling teks quotes */
+        .quote-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #5a4a3a;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .quote-source {
+            font-size: 0.95rem;
+            color: #7a6a5a;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive untuk tablet */
+        @media (max-width: 768px) {
+            .quote-flower-center {
+                width: 200px;
+                margin: 0 auto 25px;
+            }
+
+            .quote-text {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+        }
+
+        /* Responsive untuk mobile */
+        @media (max-width: 480px) {
+            .quote-flower-center {
+                width: 160px;
+                margin: 0 auto 20px;
+            }
+
+            .quote-text {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            .quote-source {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 
@@ -2393,7 +2473,11 @@
         QUOTE SECTION
         ============================================ -->
         <section class="quote-section">
-            <div class="quote-icon animate-float" data-aos="zoom-in" data-aos-duration="800">❝</div>
+            <!-- <div class="quote-icon animate-float" data-aos="zoom-in" data-aos-duration="800">❝</div> -->
+            <div class="quote-flower-center" data-aos="fade-down" data-aos-duration="1000">
+                <img src="./floral-quotes-full.png" alt="Floral Decoration">
+            </div>
+            <p class="quote-sub" style="color: var(--gold-light);">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
             <p class="quote-text" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">"Dan di antara
                 tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar
                 kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."</p>
@@ -2420,7 +2504,7 @@
                     <p class="couple-parents">Putri Bungsu<br>dari Bapak Sabari (Alm) & Ibu Mutiah</p>
 
                     <!-- Bunga di sudut kanan bawah card Mar'a -->
-                    <div class="couple-card-flower" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                    <div class="couple-card-flower">
                         <img src="./floral-corner.png" alt="Floral Decoration Mar'a">
                     </div>
                 </div>
@@ -2439,7 +2523,7 @@
                     <p class="couple-parents">Putra Sulung<br>dari Bapak Kamsuri & Ibu Juwanah</p>
 
                     <!-- Bunga di sudut kanan bawah card Aldy -->
-                    <div class="couple-card-flower" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                    <div class="couple-card-flower">
                         <img src="./floral-corner.png" alt="Floral Decoration Aldy">
                     </div>
                 </div>
