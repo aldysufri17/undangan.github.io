@@ -24,8 +24,8 @@
 
     <style>
         /* ============================================
-                   1. ROOT VARIABLES & RESET
-                   ============================================ */
+           1. ROOT VARIABLES & RESET
+           ============================================ */
         :root {
             --primary: #917B6A;
             --primary-dark: #6d5c4f;
@@ -69,7 +69,6 @@
             line-height: 1.6;
         }
 
-        /* Prevent scroll when cover is active */
         body.no-scroll {
             overflow: hidden;
             height: 100%;
@@ -78,8 +77,8 @@
         }
 
         /* ============================================
-                   2. UTILITY CLASSES
-                   ============================================ */
+           2. UTILITY CLASSES
+           ============================================ */
         .container {
             max-width: 550px;
             width: 100%;
@@ -89,22 +88,9 @@
             box-shadow: 0 0 60px rgba(0, 0, 0, 0.08);
         }
 
-        .text-center {
-            text-align: center;
-        }
-
-        .relative {
-            position: relative;
-        }
-
-        .z-1 {
-            position: relative;
-            z-index: 1;
-        }
-
         /* ============================================
-                   3. ANIMATIONS
-                   ============================================ */
+           3. ANIMATIONS
+           ============================================ */
         @keyframes pulse {
 
             0%,
@@ -213,6 +199,20 @@
             }
         }
 
+        @keyframes flowerPulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
         .animate-float {
             animation: float 3s ease-in-out infinite;
         }
@@ -226,8 +226,8 @@
         }
 
         /* ============================================
-                   4. LOADING SCREEN
-                   ============================================ */
+           4. LOADING SCREEN
+           ============================================ */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -296,8 +296,8 @@
         }
 
         /* ============================================
-                   5. COVER SCREEN
-                   ============================================ */
+           5. COVER SCREEN
+           ============================================ */
         .cover-screen {
             position: fixed;
             top: 0;
@@ -374,7 +374,7 @@
             animation: fadeIn 1.2s ease-out;
         }
 
-        .cover-logo-wrapper {
+        .cover-logo {
             width: 55%;
             max-width: 300px;
             margin: 0 auto 20px;
@@ -383,7 +383,7 @@
             align-items: center;
         }
 
-        .cover-logo-wrapper img {
+        .cover-logo img {
             width: 56%;
             height: auto;
             object-fit: contain;
@@ -466,8 +466,8 @@
         }
 
         /* ============================================
-                   6. MUSIC BUTTON
-                   ============================================ */
+           6. MUSIC BUTTON
+           ============================================ */
         .music-btn {
             position: fixed;
             bottom: 20px;
@@ -498,8 +498,8 @@
         }
 
         /* ============================================
-                   7. HERO SECTION
-                   ============================================ */
+           7. HERO SECTION
+           ============================================ */
         .hero {
             position: relative;
             height: 100vh;
@@ -609,8 +609,8 @@
         }
 
         /* ============================================
-                   8. BUTTONS
-                   ============================================ */
+           8. BUTTONS
+           ============================================ */
         .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -691,8 +691,8 @@
         }
 
         /* ============================================
-                   9. QUOTE SECTION
-                   ============================================ */
+           9. QUOTE SECTION
+           ============================================ */
         .quote-section {
             background: linear-gradient(135deg, var(--cream-dark) 0%, #ede5db 100%);
             padding: 70px 25px;
@@ -721,12 +721,18 @@
             right: -50px;
         }
 
-        .quote-icon {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            color: var(--primary-light);
-            margin-bottom: 20px;
-            opacity: 0.7;
+        .quote-flower {
+            width: 250px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .quote-flower img {
+            width: 50%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            animation: flowerPulse 5s ease-in-out infinite;
         }
 
         .quote-sub {
@@ -759,19 +765,8 @@
         }
 
         /* ============================================
-                   10. SECTION HEADERS
-                   ============================================ */
-        .section-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 11px;
-            letter-spacing: 5px;
-            color: var(--primary-light);
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            text-align: center;
-            display: block;
-        }
-
+           10. SECTION HEADERS
+           ============================================ */
         .section-title {
             font-family: 'Carattere', cursive;
             font-size: clamp(28px, 7vw, 34px);
@@ -823,8 +818,8 @@
         }
 
         /* ============================================
-                   11. COUPLE SECTION
-                   ============================================ */
+           11. COUPLE SECTION
+           ============================================ */
         .couple-section {
             padding: 70px 20px;
             text-align: center;
@@ -878,6 +873,7 @@
 
         .couple-card {
             text-align: center;
+            position: relative;
         }
 
         .couple-photo {
@@ -935,36 +931,27 @@
             line-height: 1.6;
         }
 
-        .couple-social {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 12px;
+        .couple-flower {
+            position: absolute;
+            bottom: 96px;
+            right: 43px;
+            width: 126px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 1;
+            pointer-events: none;
         }
 
-        .couple-social a {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--cream-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            text-decoration: none;
-            transition: all var(--transition);
-            font-size: 13px;
-        }
-
-        .couple-social a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
+        .couple-flower img {
+            width: 100%;
+            height: auto;
+            display: block;
+            animation: flowerPulse 4s ease-in-out infinite;
         }
 
         /* ============================================
-                   12. COUNTDOWN SECTION
-                   ============================================ */
+           12. COUNTDOWN SECTION
+           ============================================ */
         .countdown-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             padding: 80px 20px 40px;
@@ -996,17 +983,6 @@
             position: relative;
             letter-spacing: 2px;
             color: #e8dcc8;
-        }
-
-        .countdown-sub {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 35px;
-            text-align: center;
-            text-transform: uppercase;
-            position: relative;
         }
 
         .countdown-grid {
@@ -1052,22 +1028,8 @@
         }
 
         /* ============================================
-                   13. EVENTS SECTION
-                   ============================================ */
-        .events-section {
-            padding: 70px 20px;
-            position: relative;
-            background-image: url('./bg.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .events-section>* {
-            position: relative;
-            z-index: 1;
-        }
-
+           13. EVENTS SECTION
+           ============================================ */
         .event-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(5px);
@@ -1096,24 +1058,6 @@
         .event-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-xl);
-        }
-
-        .event-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 15px;
-            background: linear-gradient(135deg, var(--cream-dark), var(--cream));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--primary);
-            transition: transform var(--transition);
-        }
-
-        .event-card:hover .event-icon {
-            transform: scale(1.1) rotate(5deg);
         }
 
         .event-title {
@@ -1149,8 +1093,8 @@
         }
 
         /* ============================================
-                   14. LOVE STORY SECTION
-                   ============================================ */
+           14. LOVE STORY SECTION
+           ============================================ */
         .lovestory-section {
             padding: 116px 20px;
             background: var(--cream-dark);
@@ -1174,6 +1118,33 @@
         .story-image:hover {
             transform: scale(1.02);
             box-shadow: var(--shadow-xl);
+        }
+
+        .story-corner-flower {
+            position: absolute;
+            width: 250px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .story-corner-flower img {
+            width: 100%;
+            height: auto;
+            display: block;
+            animation: flowerPulse 4s ease-in-out infinite;
+        }
+
+        .story-corner-flower.tl {
+            top: -30px;
+            left: -30px;
+            transform: rotate(180deg);
+        }
+
+        .story-corner-flower.br {
+            bottom: -30px;
+            right: -30px;
         }
 
         .timeline {
@@ -1233,15 +1204,6 @@
             margin-bottom: 6px;
         }
 
-        .timeline-title {
-            font-family: 'Carattere', cursive;
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 6px;
-            letter-spacing: 2px;
-        }
-
         .timeline-text {
             font-family: 'Inter', sans-serif;
             font-size: 12px;
@@ -1250,8 +1212,8 @@
         }
 
         /* ============================================
-                   15. GALLERY SECTION
-                   ============================================ */
+           15. GALLERY SECTION
+           ============================================ */
         .gallery-section {
             padding: 70px 20px;
             text-align: center;
@@ -1340,8 +1302,8 @@
         }
 
         /* ============================================
-                   16. GIFT & RSVP SECTION
-                   ============================================ */
+           16. GIFT & RSVP SECTION
+           ============================================ */
         .gift-rsvp-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             padding: 80px 20px 60px;
@@ -1363,7 +1325,7 @@
             pointer-events: none;
         }
 
-        .wave-top-wrapper {
+        .wave-top {
             position: absolute;
             top: 0;
             left: 0;
@@ -1375,7 +1337,7 @@
             transform: translateY(-99%);
         }
 
-        .wave-top-wrapper svg {
+        .wave-top svg {
             position: relative;
             display: block;
             width: calc(100% + 2px);
@@ -1439,9 +1401,17 @@
             transform: scale(0.97);
         }
 
+        .rsvp-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--accent);
+            margin: 40px auto 30px;
+            opacity: 0.5;
+        }
+
         /* ============================================
-                   17. MODAL
-                   ============================================ */
+           17. MODAL
+           ============================================ */
         .gift-modal {
             display: none;
             position: fixed;
@@ -1557,17 +1527,9 @@
             color: white;
         }
 
-        .rsvp-divider {
-            width: 60px;
-            height: 1px;
-            background: var(--accent);
-            margin: 40px auto 30px;
-            opacity: 0.5;
-        }
-
         /* ============================================
-                   18. RSVP FORM
-                   ============================================ */
+           18. RSVP FORM
+           ============================================ */
         .rsvp-form {
             max-width: 380px;
             margin: 25px auto 0;
@@ -1614,8 +1576,8 @@
         }
 
         /* ============================================
-                   19. WISHES LIST
-                   ============================================ */
+           19. WISHES LIST
+           ============================================ */
         .wishes-list {
             max-width: 380px;
             margin: 30px auto 0;
@@ -1694,16 +1656,16 @@
         }
 
         /* ============================================
-                   20. HERO IMAGE (footer hero)
-                   ============================================ */
-        .hero-image-section {
+           20. FOOTER HERO IMAGE
+           ============================================ */
+        .footer-hero {
             position: relative;
             width: 100%;
             height: 500px;
             overflow: hidden;
         }
 
-        .hero-image-bg {
+        .footer-hero img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -1711,11 +1673,11 @@
             transition: transform 0.6s ease;
         }
 
-        .hero-image-section:hover .hero-image-bg {
+        .footer-hero:hover img {
             transform: scale(1.05);
         }
 
-        .hero-image-gradient {
+        .footer-hero-gradient {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -1726,7 +1688,7 @@
             pointer-events: none;
         }
 
-        .hero-image-overlay {
+        .footer-hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
@@ -1737,17 +1699,15 @@
         }
 
         /* ============================================
-                   21. FOOTER
-                   ============================================ */
+           21. FOOTER SECTION
+           ============================================ */
         .footer-section {
             padding: 70px 24px 50px;
             text-align: center;
             background: var(--cream);
             position: relative;
-            /* Hapus background-image dari sini */
         }
 
-        /* Membuat layer khusus untuk gambar background dengan gradient opacity */
         .footer-section::before {
             content: '';
             position: absolute;
@@ -1772,6 +1732,8 @@
             display: block;
             object-fit: contain;
             transition: transform var(--transition);
+            position: relative;
+            z-index: 1;
         }
 
         .footer-logo:hover {
@@ -1786,6 +1748,8 @@
             color: var(--primary);
             margin-bottom: 25px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-text {
@@ -1796,6 +1760,8 @@
             max-width: 360px;
             margin: 0 auto 30px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-divider {
@@ -1804,6 +1770,8 @@
             background: var(--primary-light);
             margin: 30px auto 25px;
             transition: width 0.4s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-section:hover .footer-divider {
@@ -1816,6 +1784,8 @@
             color: var(--text-light);
             margin-bottom: 12px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-couple {
@@ -1827,15 +1797,8 @@
             text-align: center;
             transition: all var(--transition);
             letter-spacing: 1px;
-        }
-
-        .footer-credit {
-            font-family: 'Inter', sans-serif;
-            font-size: 10px;
-            color: var(--text-light);
-            letter-spacing: 1px;
-            margin-top: 30px;
-            opacity: 0.7;
+            position: relative;
+            z-index: 1;
         }
 
         .highlight {
@@ -1845,9 +1808,35 @@
             transition: all var(--transition);
         }
 
+        .footer-flower {
+            position: absolute;
+            width: 220px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 1;
+            pointer-events: none;
+            bottom: 0px;
+        }
+
+        .footer-flower img {
+            width: 100%;
+            height: auto;
+            display: block;
+            animation: flowerPulse 4s ease-in-out infinite;
+        }
+
+        .footer-flower.left {
+            left: -30px;
+            transform: scaleX(-1) !important;
+        }
+
+        .footer-flower.right {
+            right: -30px;
+        }
+
         /* ============================================
-                   22. LIGHTBOX
-                   ============================================ */
+           22. LIGHTBOX
+           ============================================ */
         .lightbox {
             position: fixed;
             top: 0;
@@ -1959,8 +1948,8 @@
         }
 
         /* ============================================
-                   23. TOAST
-                   ============================================ */
+           23. TOAST
+           ============================================ */
         .toast {
             position: fixed;
             bottom: 80px;
@@ -1994,8 +1983,8 @@
         }
 
         /* ============================================
-                   24. SCROLL TO TOP
-                   ============================================ */
+           24. SCROLL TO TOP
+           ============================================ */
         .scroll-top {
             position: fixed;
             bottom: 20px;
@@ -2026,15 +2015,93 @@
         }
 
         /* ============================================
-                   25. RESPONSIVE
-                   ============================================ */
-        @media (max-width: 550px) {
+           25. RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .story-corner-flower {
+                width: 180px;
+            }
+
+            .story-corner-flower.tl {
+                top: -20px;
+                left: -20px;
+            }
+
+            .story-corner-flower.br {
+                bottom: -20px;
+                right: -20px;
+            }
+
+            .footer-flower {
+                width: 160px;
+                bottom: -20px;
+            }
+
+            .footer-flower.left {
+                left: 0px;
+            }
+
+            .footer-flower.right {
+                right: 0px;
+            }
+
+            .couple-flower {
+                width: 140px;
+                bottom: -20px;
+                right: -20px;
+            }
+
+            .quote-flower {
+                width: 200px;
+                margin: 0 auto 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .story-corner-flower {
+                width: 130px;
+            }
+
+            .story-corner-flower.tl {
+                top: -28px;
+                left: -18px;
+            }
+
+            .story-corner-flower.br {
+                bottom: -28px;
+                right: -18px;
+            }
+
+            .footer-flower {
+                width: 170px;
+                bottom: 0px;
+            }
+
+            .footer-flower.left {
+                left: -15px;
+            }
+
+            .footer-flower.right {
+                right: -15px;
+            }
+
+            .couple-flower {
+                width: 106px;
+                bottom: 96px;
+                right: 48px;
+            }
+
+            .quote-flower {
+                width: 160px;
+                margin: 0 auto 20px;
+            }
+
             .countdown-item {
                 padding: 12px 14px;
                 min-width: 60px;
             }
 
-            .hero-image-section {
+            .footer-hero {
                 height: 400px;
             }
 
@@ -2042,7 +2109,7 @@
                 height: 50px;
             }
 
-            .wave-top-wrapper svg {
+            .wave-top svg {
                 min-height: 50px;
             }
 
@@ -2074,7 +2141,7 @@
         }
 
         @media (max-width: 380px) {
-            .wave-top-wrapper svg {
+            .wave-top svg {
                 min-height: 40px;
             }
 
@@ -2091,305 +2158,8 @@
         @media (max-width: 768px) {
 
             .couple-section,
-            .events-section,
             .gallery-section {
                 background-attachment: scroll;
-            }
-        }
-
-        /* Bunga Pojok Kiri Atas */
-        .corner-flower-tl {
-            position: absolute;
-            top: -30px;
-            left: -30px;
-            width: 250px;
-            height: auto;
-            opacity: 0.9;
-            z-index: 1;
-            pointer-events: none;
-            transform: rotate(180deg);
-        }
-
-        /* Bunga Pojok Kanan Bawah */
-        .corner-flower-br {
-            position: absolute;
-            bottom: -30px;
-            right: -30px;
-            width: 250px;
-            height: auto;
-            opacity: 0.9;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .corner-flower-tl img,
-        .corner-flower-br img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Responsive untuk tablet */
-        @media (max-width: 768px) {
-
-            .corner-flower-tl,
-            .corner-flower-bl {
-                width: 180px;
-            }
-
-            .corner-flower-br {
-                width: 200px;
-            }
-
-            .corner-flower-tl {
-                top: -20px;
-                left: -20px;
-            }
-
-            .corner-flower-tr {
-                top: -20px;
-                right: -20px;
-            }
-
-            .corner-flower-bl {
-                bottom: -20px;
-                left: -20px;
-            }
-
-            .corner-flower-br {
-                bottom: -20px;
-                right: -20px;
-            }
-        }
-
-        /* Responsive untuk mobile */
-        @media (max-width: 480px) {
-
-            .corner-flower-tl .corner-flower-br {
-                width: 130px;
-            }
-
-            .corner-flower-tl {
-                top: -43px;
-                left: -30px;
-            }
-
-            .corner-flower-br {
-                bottom: -43px;
-                right: -30px;
-            }
-        }
-
-        /* Styling untuk bunga di sudut kanan bawah setiap couple-card */
-        .couple-card-flower {
-            position: absolute;
-            bottom: 96px;
-            right: 43px;
-            width: 126px;
-            height: auto;
-            opacity: 0.9;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .couple-card-flower img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .couple-card-flower {
-                width: 140px;
-                bottom: -20px;
-                right: -20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .couple-card-flower {
-                width: 106px;
-                bottom: 96px;
-                right: 48px;
-            }
-        }
-
-        /* 1. Buat Keyframes Animasi */
-        @keyframes bunga-pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-                /* Membesar 5% */
-            }
-
-            100% {
-                transform: scale(1);
-                /* Kembali ke ukuran semula */
-            }
-        }
-
-        /* 2. Terapkan Animasi ke Semua Gambar Bunga */
-        /* Bunga di Section Couple Card */
-        .couple-card-flower img,
-        .couple-card-flower-left img,
-
-        /* Bunga di Section Rangkaian Rasa (4 Sudut) */
-        .corner-flower-tl img,
-        .corner-flower-tr img,
-        .corner-flower-bl img,
-        .corner-flower-br img {
-
-            animation: bunga-pulse 4s ease-in-out infinite;
-            transform-origin: center center;
-            /* Membesar dari titik tengah */
-        }
-
-        /* Bunga Pojok Kiri Bawah Footer - Mirror Horizontal */
-        .footer-flower-bl {
-            position: absolute;
-            bottom: 0px;
-            left: -30px;
-            width: 220px;
-            height: auto;
-            opacity: 0.9;
-            z-index: 1;
-            pointer-events: none;
-            transform: scaleX(-1) !important;
-            /* Mirror horizontal - membalik kiri-kanan */
-        }
-
-        /* Bunga Pojok Kanan Bawah Footer */
-        .footer-flower-br {
-            position: absolute;
-            bottom: 0px;
-            right: -30px;
-            width: 220px;
-            height: auto;
-            opacity: 0.9;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .footer-flower-bl img,
-        .footer-flower-br img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Animasi pulse ke bunga footer */
-        .footer-flower-bl img,
-        .footer-flower-br img {
-            animation: bunga-pulse 4s ease-in-out infinite;
-        }
-
-        /* Responsive untuk tablet */
-        @media (max-width: 768px) {
-
-            .footer-flower-bl,
-            .footer-flower-br {
-                width: 160px;
-                bottom: -20px;
-            }
-
-            .footer-flower-bl {
-                left: 0px;
-            }
-
-            .footer-flower-br {
-                right: 0px;
-            }
-        }
-
-        /* Responsive untuk mobile */
-        @media (max-width: 480px) {
-
-            .footer-flower-bl,
-            .footer-flower-br {
-                width: 170px;
-                bottom: 0px;
-            }
-
-            .footer-flower-bl {
-                left: -15px;
-            }
-
-            .footer-flower-br {
-                right: -15px;
-            }
-        }
-
-        .quote-flower-center {
-            width: 250px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-
-        .quote-flower-center img {
-            width: 50%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-
-        /* Animasi pulse untuk bunga */
-        .quote-flower-center img {
-            animation: bunga-pulse 5s ease-in-out infinite;
-            transform-origin: center center;
-        }
-
-        /* Styling teks quotes */
-        .quote-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .quote-text {
-            font-size: 1.1rem;
-            line-height: 2;
-            color: #5a4a3a;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .quote-source {
-            font-size: 0.95rem;
-            color: #7a6a5a;
-            font-weight: 600;
-            letter-spacing: 2px;
-        }
-
-        /* Responsive untuk tablet */
-        @media (max-width: 768px) {
-            .quote-flower-center {
-                width: 200px;
-                margin: 0 auto 25px;
-            }
-
-            .quote-text {
-                font-size: 1rem;
-                line-height: 1.8;
-            }
-        }
-
-        /* Responsive untuk mobile */
-        @media (max-width: 480px) {
-            .quote-flower-center {
-                width: 160px;
-                margin: 0 auto 20px;
-            }
-
-            .quote-text {
-                font-size: 0.95rem;
-                line-height: 1.7;
-            }
-
-            .quote-source {
-                font-size: 0.85rem;
             }
         }
     </style>
@@ -2422,11 +2192,11 @@
             <div class="cover-slideshow">
                 <div class="cover-slide active"><img src="./SM-1.jpg" alt="Cover 1" loading="eager"></div>
                 <div class="cover-slide"><img src="./SM-2.jpg" alt="Cover 2" loading="lazy"></div>
-                <div class="cover-slide"><img src="./SM-3.jpg" alt="Cover 3" loading="lazy"></div>
+                <div class="cover-slide"><img src="./SM-3.png" alt="Cover 3" loading="lazy"></div>
             </div>
             <div class="cover-content">
                 <p class="cover-label">The Wedding of</p>
-                <div class="cover-logo-wrapper">
+                <div class="cover-logo">
                     <img src="logo-name.png" alt="Logo">
                 </div>
                 <p class="cover-date">Rabu, 29 Juli 2026</p>
@@ -2457,7 +2227,7 @@
             <div class="hero-slideshow">
                 <div class="hero-slide active"><img src="./SM-1.jpg" alt="Hero 1" loading="eager"></div>
                 <div class="hero-slide"><img src="./SM-2.jpg" alt="Hero 2" loading="lazy"></div>
-                <div class="hero-slide"><img src="./SM-3.jpg" alt="Hero 3" loading="lazy"></div>
+                <div class="hero-slide"><img src="./SM-3.png" alt="Hero 3" loading="lazy"></div>
             </div>
             <div class="hero-overlay"></div>
             <div class="hero-gradient"></div>
@@ -2473,11 +2243,10 @@
         QUOTE SECTION
         ============================================ -->
         <section class="quote-section">
-            <!-- <div class="quote-icon animate-float" data-aos="zoom-in" data-aos-duration="800">❝</div> -->
-            <div class="quote-flower-center" data-aos="fade-down" data-aos-duration="1000">
+            <div class="quote-flower" data-aos="fade-down" data-aos-duration="1000">
                 <img src="./floral-quotes-full.png" alt="Floral Decoration">
             </div>
-            <p class="quote-sub" style="color: var(--gold-light);">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+            <p class="quote-sub">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
             <p class="quote-text" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">"Dan di antara
                 tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar
                 kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."</p>
@@ -2492,39 +2261,33 @@
             <p class="couple-salam" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Assalamu'alaikum Wr.
                 Wb.</p>
             <p class="couple-intro" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">Tanpa mengurangi
-                rasa
-                hormat. Kami mengundang Bapak/Ibu/Saudara/i serta Kerabat sekalian untuk menghadiri acara pernikahan
-                kami:</p>
+                rasa hormat. Kami mengundang Bapak/Ibu/Saudara/i serta Kerabat sekalian untuk menghadiri acara
+                pernikahan kami:</p>
 
             <div class="couple-grid">
                 <!-- Couple Card Mar'atul Sarifah -->
                 <div class="couple-card" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="couple-photo"><img src="girl.jpg" alt="Mar'atul Sarifah" loading="lazy"></div>
+                    <div class="couple-photo"><img src="couple-girl.jpg" alt="Mar'atul Sarifah" loading="lazy"></div>
                     <h3 class="couple-name">Mar'atul Sarifah</h3>
                     <p class="couple-parents">Putri Bungsu<br>dari Bapak Sabari (Alm) & Ibu Mutiah</p>
-
-                    <!-- Bunga di sudut kanan bawah card Mar'a -->
-                    <div class="couple-card-flower">
-                        <img src="./floral-corner.png" alt="Floral Decoration Mar'a">
+                    <div class="couple-flower">
+                        <img src="./floral-corner.png" alt="Floral Decoration">
                     </div>
                 </div>
 
                 <div class="divider-flower" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
                     <span class="line"></span>
-                    <p class="cover-amp" style="color: #5a4a3a; font-family: 'Carattere', cursive; font-size: 32px;">&
-                    </p>
+                    <p style="color: #5a4a3a; font-family: 'Carattere', cursive; font-size: 32px;">&</p>
                     <span class="line"></span>
                 </div>
 
                 <!-- Couple Card Aldy Sufriyanto -->
                 <div class="couple-card" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="couple-photo"><img src="./man.png" alt="Aldy Sufriyanto" loading="lazy"></div>
+                    <div class="couple-photo"><img src="couple-man.png" alt="Aldy Sufriyanto" loading="lazy"></div>
                     <h3 class="couple-name">Aldy Sufriyanto</h3>
                     <p class="couple-parents">Putra Sulung<br>dari Bapak Kamsuri & Ibu Juwanah</p>
-
-                    <!-- Bunga di sudut kanan bawah card Aldy -->
-                    <div class="couple-card-flower">
-                        <img src="./floral-corner.png" alt="Floral Decoration Aldy">
+                    <div class="couple-flower">
+                        <img src="./floral-corner.png" alt="Floral Decoration">
                     </div>
                 </div>
             </div>
@@ -2580,7 +2343,7 @@
         LOVE STORY SECTION
         ============================================ -->
         <section class="lovestory-section" id="story">
-            <div class="corner-flower-tl">
+            <div class="story-corner-flower tl">
                 <img src="./floral-corner.png" alt="Floral Decoration Top Left">
             </div>
 
@@ -2642,7 +2405,7 @@
                         yang tak lekang oleh waktu.</p>
                 </div>
             </div>
-            <div class="corner-flower-br">
+            <div class="story-corner-flower br">
                 <img src="./floral-corner.png" alt="Floral Decoration Bottom Right">
             </div>
         </section>
@@ -2669,7 +2432,7 @@
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200"
                     onclick="openLightbox(2)">
-                    <img src="./SM-3.jpg" alt="Gallery 3" loading="lazy">
+                    <img src="./SM-3.png" alt="Gallery 3" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="250"
                     onclick="openLightbox(3)">
@@ -2689,7 +2452,7 @@
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="450"
                     onclick="openLightbox(7)">
-                    <img src="./SM-3.jpg" alt="Gallery 8" loading="lazy">
+                    <img src="./SM-3.png" alt="Gallery 8" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500"
                     onclick="openLightbox(8)">
@@ -2706,7 +2469,7 @@
         GIFT & RSVP SECTION
         ============================================ -->
         <section class="gift-rsvp-section" id="rsvp">
-            <div class="wave-top-wrapper">
+            <div class="wave-top">
                 <svg width="100%" height="100%" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg"
                     preserveAspectRatio="none">
                     <path
@@ -2787,12 +2550,12 @@
         </div>
 
         <!-- ============================================
-        HERO IMAGE (footer visual)
+        FOOTER HERO IMAGE
         ============================================ -->
-        <div class="hero-image-section" data-aos="fade-up" data-aos-duration="1000">
-            <img class="hero-image-bg" src="./footer.jpg" alt="Hero Image" loading="lazy">
-            <div class="hero-image-overlay"></div>
-            <div class="hero-image-gradient"></div>
+        <div class="footer-hero" data-aos="fade-up" data-aos-duration="1000">
+            <img src="./SM-3.png" alt="Hero Image" loading="lazy">
+            <div class="footer-hero-overlay"></div>
+            <div class="footer-hero-gradient"></div>
         </div>
 
         <!-- ============================================
@@ -2811,13 +2574,11 @@
             <p class="footer-couple-label" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Kami Yang
                 Berbahagia</p>
             <p class="footer-couple" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">Mar'a & Aldy</p>
-            <!-- Bunga Pojok Kiri Bawah Footer -->
-            <div class="footer-flower-bl" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="600">
+
+            <div class="footer-flower left" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="600">
                 <img src="./floral-corner.png" alt="Floral Footer Left">
             </div>
-
-            <!-- Bunga Pojok Kanan Bawah Footer -->
-            <div class="footer-flower-br" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600">
+            <div class="footer-flower right" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600">
                 <img src="./floral-corner.png" alt="Floral Footer Right">
             </div>
         </footer>
@@ -2864,16 +2625,8 @@
         // GALLERY DATA
         // ============================================
         const galleryImages = [
-            './SM-1.jpg',
-            './SM-2.jpg',
-            './SM-3.jpg',
-            './SM-4.jpg',
-            './SM-5.jpg',
-            './SM-1.jpg',
-            './SM-2.jpg',
-            './SM-3.jpg',
-            './SM-4.jpg',
-            './SM-5.jpg'
+            './SM-1.jpg', './SM-2.jpg', './SM-3.png', './SM-4.jpg', './SM-5.jpg',
+            './SM-1.jpg', './SM-2.jpg', './SM-3.png', './SM-4.jpg', './SM-5.jpg'
         ];
 
         let currentGalleryIndex = 0;
@@ -2893,7 +2646,6 @@
         const urlParams = new URLSearchParams(window.location.search);
         const guestName = urlParams.get('to') || urlParams.get('guest');
         if (guestName) {
-            document.getElementById('guestInfo').style.display = 'block';
             document.querySelector('.cover-guest-name').textContent = decodeURIComponent(guestName.replace(/\+/g, ' '));
         }
 
@@ -3025,18 +2777,15 @@
         // WISHES MANAGEMENT
         // ============================================
         let wishes = JSON.parse(localStorage.getItem('weddingWishes')) || [{
-                name: 'Santi',
-                message: 'Selamat ya Mar\'a & Aldy! Semoga menjadi keluarga sakinah mawaddah warahmah. 🤍'
-            },
-            {
-                name: 'Rina',
-                message: 'Barakallah! Semoga selalu dalam kebahagiaan.'
-            },
-            {
-                name: 'Budi',
-                message: 'Selamat menempuh hidup baru! Semoga lancar sampai hari H.'
-            }
-        ];
+            name: 'Santi',
+            message: 'Selamat ya Mar\'a & Aldy! Semoga menjadi keluarga sakinah mawaddah warahmah. 🤍'
+        }, {
+            name: 'Rina',
+            message: 'Barakallah! Semoga selalu dalam kebahagiaan.'
+        }, {
+            name: 'Budi',
+            message: 'Selamat menempuh hidup baru! Semoga lancar sampai hari H.'
+        }];
 
         function escapeHtml(str) {
             const div = document.createElement('div');
@@ -3105,8 +2854,7 @@
         }
 
         function updateLightboxImage() {
-            const img = document.getElementById('lightboxImg');
-            img.src = galleryImages[currentGalleryIndex];
+            document.getElementById('lightboxImg').src = galleryImages[currentGalleryIndex];
             document.getElementById('lightboxCounter').textContent =
                 `${currentGalleryIndex + 1} / ${galleryImages.length}`;
         }
@@ -3116,7 +2864,7 @@
             updateLightboxImage();
         }
 
-        // Keyboard navigation for lightbox
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('lightbox').classList.contains('active')) {
                 if (e.key === 'ArrowLeft') {
@@ -3131,10 +2879,8 @@
             }
         });
 
-        // Touch swipe for lightbox
+        // Touch swipe
         let touchStartX = 0;
-        let touchEndX = 0;
-
         document.addEventListener('touchstart', (e) => {
             if (document.getElementById('lightbox').classList.contains('active')) {
                 touchStartX = e.changedTouches[0].screenX;
@@ -3143,14 +2889,9 @@
 
         document.addEventListener('touchend', (e) => {
             if (document.getElementById('lightbox').classList.contains('active')) {
-                touchEndX = e.changedTouches[0].screenX;
-                const diff = touchStartX - touchEndX;
+                const diff = touchStartX - e.changedTouches[0].screenX;
                 if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
-                        navigateGallery(1);
-                    } else {
-                        navigateGallery(-1);
-                    }
+                    navigateGallery(diff > 0 ? 1 : -1);
                 }
             }
         });
