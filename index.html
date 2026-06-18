@@ -2138,12 +2138,12 @@
 
             .corner-flower-tl {
                 top: -43px;
-                left: -15px;
+                left: -30px;
             }
 
             .corner-flower-br {
                 bottom: -43px;
-                right: -15px;
+                right: -30px;
             }
         }
 
@@ -2212,6 +2212,81 @@
             animation: bunga-pulse 4s ease-in-out infinite;
             transform-origin: center center;
             /* Membesar dari titik tengah */
+        }
+
+        /* Bunga Pojok Kiri Bawah Footer - Mirror Horizontal */
+        .footer-flower-bl {
+            position: absolute;
+            bottom: 0px;
+            left: -30px;
+            width: 220px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 1;
+            pointer-events: none;
+            transform: scaleX(-1) !important;
+            /* Mirror horizontal - membalik kiri-kanan */
+        }
+
+        /* Bunga Pojok Kanan Bawah Footer */
+        .footer-flower-br {
+            position: absolute;
+            bottom: 0px;
+            right: -30px;
+            width: 220px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .footer-flower-bl img,
+        .footer-flower-br img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Animasi pulse ke bunga footer */
+        .footer-flower-bl img,
+        .footer-flower-br img {
+            animation: bunga-pulse 4s ease-in-out infinite;
+        }
+
+        /* Responsive untuk tablet */
+        @media (max-width: 768px) {
+
+            .footer-flower-bl,
+            .footer-flower-br {
+                width: 160px;
+                bottom: -20px;
+            }
+
+            .footer-flower-bl {
+                left: 0px;
+            }
+
+            .footer-flower-br {
+                right: 0px;
+            }
+        }
+
+        /* Responsive untuk mobile */
+        @media (max-width: 480px) {
+
+            .footer-flower-bl,
+            .footer-flower-br {
+                width: 170px;
+                bottom: 0px;
+            }
+
+            .footer-flower-bl {
+                left: -15px;
+            }
+
+            .footer-flower-br {
+                right: -15px;
+            }
         }
     </style>
 </head>
@@ -2328,7 +2403,7 @@
 
                 <div class="divider-flower" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
                     <span class="line"></span>
-                    <p class="cover-amp" style="color: #5a4a3a;">&</p>
+                    <p class="cover-amp" style="color: #5a4a3a; font-family: 'Carattere', cursive; font-size: 32px;">&</p>
                     <span class="line"></span>
                 </div>
 
@@ -2627,6 +2702,15 @@
             <p class="footer-couple-label" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Kami Yang
                 Berbahagia</p>
             <p class="footer-couple" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">Mar'a & Aldy</p>
+            <!-- Bunga Pojok Kiri Bawah Footer -->
+            <div class="footer-flower-bl" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="600">
+                <img src="./floral-corner.png" alt="Floral Footer Left">
+            </div>
+
+            <!-- Bunga Pojok Kanan Bawah Footer -->
+            <div class="footer-flower-br" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600">
+                <img src="./floral-corner.png" alt="Floral Footer Right">
+            </div>
         </footer>
 
     </div><!-- .container -->
